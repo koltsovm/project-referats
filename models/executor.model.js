@@ -6,6 +6,7 @@ const executorSchema = new Schema(
     firstName: String,
     lastName: String,
     email: { type: String, required: true },
+    password: { type: String, required: true },
     avatar: String,
     about: String,
     phone: String,

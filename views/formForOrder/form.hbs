@@ -1,0 +1,13 @@
+  <div id="customer-new-project-form">
+    <form action method="post">
+      <label for="title">Название</label>
+      <input type="text" id="title" max-length="50" min-length="5" name="title" placeholder="Название вашей работы" required>
+      <label for="description">Описание</label>
+      <textarea id="description" rows="3" max-length="1000" min-length="5" name="description" placeholder="Описание вашей работы" required></textarea>
+      <label for="budget">Бюджет</label>
+      <input type="number" id="budget" min="0" name="budget" required>
+      <label for="term">Срок</label>
+      <input type="number" id="term" min="0" name="term" required>
+      <button>Сделать заказ</button>
+    </form>
+  </div>

@@ -8,6 +8,8 @@ const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 const dbConnect = require('./db/dbConnect');
 const indexRouter = require('./routes/index');
+const freelancersRouter = require('./routes/freelancers');
+const orderRouter = require('./routes/order')
 
 const mongoUrl = process.env.DATABASE_STRING;
 
@@ -22,6 +24,7 @@ app.use(express.json());
 
 // Add routers
 app.use('/', indexRouter);
+app.use('/freelancers', freelancersRouter);
 
 const options = {
   store: MongoStore.create({ mongoUrl }),

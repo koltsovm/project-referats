@@ -1,0 +1,38 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "#Release 0 Создаем скелет: авторизация, зависимости, подключение пакетов.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/komisdaria/project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/komisdaria/project/issues"
+  },
+  "homepage": "https://github.com/komisdaria/project#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "connect-mongo": "^4.4.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "hbs": "^4.1.2",
+    "mongoose": "^5.12.5",
+    "morgan": "^1.10.0"
+  }
+}

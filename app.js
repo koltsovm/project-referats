@@ -7,6 +7,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 const dbConnect = require('./db/dbConnect');
+const indexRouter = require('./routes/index');
 
 const mongoUrl = process.env.DATABASE_STRING;
 
@@ -18,6 +19,9 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// Add routers
+app.use('/', indexRouter);
 
 const options = {
   store: MongoStore.create({ mongoUrl }),

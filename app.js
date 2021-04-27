@@ -25,7 +25,7 @@ app.use(express.json());
 
 // Add routers
 app.use('/', indexRouter);
-app.use('/, profileRouter');
+// app.use('/, profileRouter);
 app.use('/registration', registrationRouter);
 
 const options = {

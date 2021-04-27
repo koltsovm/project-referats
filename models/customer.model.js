@@ -6,12 +6,13 @@ const customerSchema = new Schema(
     firstName: String,
     lastName: String,
     email: { type: String, required: true },
+    password: { type: String, required: true },
     phone: String,
     orders: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
     rating: Number,
     rewiews: [{ type: Schema.Types.ObjectId, ref: 'Rewiew' }],
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
 module.exports = model('Customer', customerSchema);

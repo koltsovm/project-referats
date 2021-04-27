@@ -1,12 +1,23 @@
 <h2>Пожалуйста, зарегистрируйтесь</h2>
 <form action="" method="POST">
+  <p>
   <label for="username">Придумайте логин</label>
   <input id="username" type="text" name="username" placeholder="Введите логин" required>
+  </p>
+  <p>
   <label for="phone">Введите номер телефона</label>
   <input type="tel" name="phone" id="phone" required>
+  </p>
+  <p>
   <label for="email">Введите почту</label>
   <input id="email" type="email" name="email" placeholder="Введите почту" required>
+  </p>
+  <p>
   <label for="password">Придумайте пароль, от 6 символов</label>
   <input type="password" name="password" id="password" minlength="6" required>
+  </p>
+  <p>Зарегистрироваться как:</p>
+  <p><input name="typeuser" type="radio" value="customer"> Заказчик</p>
+  <p><input name="typeuser" type="radio" value="executor"> Исполнитель</p>
   <button type="submit">Зарегистрироваться</button>
 </form>

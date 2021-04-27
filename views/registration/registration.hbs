@@ -1,12 +1,66 @@
 <h2>Пожалуйста, зарегистрируйтесь</h2>
-<form action="" method="POST">
+{{!-- <form action="" method="POST">
+  <p>
   <label for="username">Придумайте логин</label>
   <input id="username" type="text" name="username" placeholder="Введите логин" required>
+  </p>
+  <p>
   <label for="phone">Введите номер телефона</label>
   <input type="tel" name="phone" id="phone" required>
+  </p>
+  <p>
   <label for="email">Введите почту</label>
   <input id="email" type="email" name="email" placeholder="Введите почту" required>
+  </p>
+  <p>
   <label for="password">Придумайте пароль, от 6 символов</label>
   <input type="password" name="password" id="password" minlength="6" required>
+  </p>
+  <p>Зарегистрироваться как:</p>
+  <p><input name="typeuser" type="radio" value="customer"> Заказчик</p>
+  <p><input name="typeuser" type="radio" value="executor"> Исполнитель</p>
   <button type="submit">Зарегистрироваться</button>
+</form> --}}
+
+<form action="" method="POST">
+    <div class="mb-3">
+    <label for="exampleInputLogin" class="form-label">Придумайте логин</label>
+    <input name="username"  type="text" class="form-control" id="exampleInputLogin" aria-describedby="emailHelp" required>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Введите почту</label>
+    <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+  </div>
+    <div class="mb-3">
+    <label for="exampleInputPhone" class="form-label">Введите номер телефона</label>
+    <input type="tel"  name="phone" class="form-control" id="exampleInputPhone" aria-describedby="emailHelp" required>
+  <div id="emailHelp" class="form-text">Мы не разглашаем информацию третьим лицам.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Придумайте пароль, от 6 символов</label>
+    <input name="password" minlength="6" type="password" class="form-control" id="exampleInputPassword1" required>
+  </div>
+
+
+<div class="mb-3">
+  <label for="formFileMultiple" class="form-label">Загрузите аватарку</label>
+  <input class="form-control" type="file" id="formFileMultiple" multiple>
+</div>
+
+
+  <p>Зарегистрироваться как:</p>
+<div class="form-check">
+  <input  name="typeuser" value="customer" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+  <label class="form-check-label" for="flexRadioDefault1">
+    Заказчик
+  </label>
+</div>
+<div class="form-check">
+  <input name="typeuser" value="executor" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+  <label class="form-check-label" for="flexRadioDefault2">
+    Исполнитель
+  </label>
+</div>
+
+  <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
 </form>

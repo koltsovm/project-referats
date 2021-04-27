@@ -5,12 +5,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const mongoose = require('mongoose');
 const dbConnect = require('./db/dbConnect');
 const indexRouter = require('./routes/index');
 const profileRouter = require('./routes/profile/profile');
 const registrationRouter = require('./routes/registration/registration');
-
 
 const mongoUrl = process.env.DATABASE_STRING;
 
@@ -25,7 +23,7 @@ app.use(express.json());
 
 // Add routers
 app.use('/', indexRouter);
-app.use('/, profileRouter');
+app.use('/profile', profileRouter);
 app.use('/registration', registrationRouter);
 
 const options = {

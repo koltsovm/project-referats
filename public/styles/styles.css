@@ -1,0 +1,18 @@
+.profile-header {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#nav-tab {
+  display: flex;
+  justify-content: center;
+  padding-top: 3vh;
+}
+
+.tab-pane {
+  display: flex;
+  justify-content: center;
+  max-width: 70vw;
+  margin: 0 auto;
+  padding: 2vh;
+}

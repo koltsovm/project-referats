@@ -1,0 +1,23 @@
+  <div id="customer-new-project-form">
+    <form action method="post">
+      <label for="type">Название</label>
+      <input type="text" id="type" max-length="50" min-length="5" name="type" placeholder="Тип вашей работы" required>
+      
+      <label for="title">Название</label>
+      <input type="text" id="title" max-length="50" min-length="5" name="title" placeholder="Название вашей работы" required>
+      
+      <label for="description">Описание</label>
+      <textarea id="description" rows="3" max-length="1000" min-length="5" name="description" placeholder="Описание вашей работы" required></textarea>
+      {{!-- <label for="budget">Бюджет</label> --}}
+      {{!-- <input type="number" id="budget" min="0" name="budget" required> --}}
+      
+      <label for="deadline">Срок</label>
+      <input type="date" id="deadline" name="deadline" required>
+      
+      <label for="file">Файлы</label>
+      <input type="file" id="file"name="file" accept="">
+      
+      <input type="text" id="category-id" name="category-id" style="visibility: hidden;">
+      <button>Сделать заказ</button>
+    </form>
+  </div>

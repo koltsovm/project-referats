@@ -5,14 +5,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-const mongoose = require('mongoose');
 const dbConnect = require('./db/dbConnect');
 const indexRouter = require('./routes/index');
 const executorsRouter = require('./routes/executors');
-const orderRouter = require('./routes/order')
+const orderRouter = require('./routes/orders/order')
 const profileRouter = require('./routes/profile/profile');
 const registrationRouter = require('./routes/registration/registration');
-
 
 const mongoUrl = process.env.DATABASE_STRING;
 
@@ -24,13 +22,6 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Add routers
-app.use('/', indexRouter);
-app.use('/executors', executorsRouter);
-// app.use('/', profileRouter);
-app.use('/orders', orderRouter)
-app.use('/registration', registrationRouter);
 
 const options = {
   store: MongoStore.create({ mongoUrl }),
@@ -44,14 +35,20 @@ const options = {
 };
 
 const sessionMiddleware = session(options);
+app.use(sessionMiddleware);
+
+// Add routers
+app.use('/', indexRouter);
+app.use('/profile', profileRouter);
+app.use('/registration', registrationRouter);
+app.use('/executors', executorsRouter);
+app.use('/orders', orderRouter)
 
 // Добавляем юзера во все hbs
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
   next();
 });
-
-app.use(sessionMiddleware);
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.
 //  Это значит, что искомого раздела просто нет на сайте.

@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const Category = require('../models/category.model');
-const Order = require('../models/order.model');
-const Customer = require('../models/customer.model');
+const Category = require('../../models/category.model');
+const Order = require('../../models/order.model');
+const Customer = require('../../models/customer.model');
 
 const router = Router();
 
@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     return res.redirect('/login');
   }
   const categories = await Category.find(); // находим все категории по которым можно сделать заказ
-  res.render('order', { categories });
+  res.render('orders/order', { categories });
 });
 
 router.post('/', async (req, res) => {
@@ -19,5 +19,7 @@ router.post('/', async (req, res) => {
   await Order.create({title, category: categoryId, description, customer: user.id, deadline });
   res.redirect('');
 });
+
+
 
 module.exports = router;

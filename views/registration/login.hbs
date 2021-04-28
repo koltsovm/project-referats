@@ -1,7 +1,21 @@
-<form action="" method="POST">
+{{!-- <form action="" method="POST">
   <label for="username">Введите логин</label>
   <input id="username" type="text" name="username" placeholder="Введите логин" required>
   <label for="password">Введите пароль</label>
   <input type="password" name="password" id="password" minlength="6" required>
   <button type="submit">Войти</button>
-</form>
+</form> --}}
+<div class="container form-container">
+  <h2>Добро пожаловать!</h2>
+  <form action="" method="POST">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label" >Введите вашу почту</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"  required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Введите ваш пароль</label>
+      <input type="password" class="form-control" id="exampleInputPassword1"  name="password" id="password" minlength="6" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+  </form>
+</div>

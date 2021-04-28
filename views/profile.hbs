@@ -1,0 +1,128 @@
+{{#if executor}}
+  <main class="profile-main">
+    <nav class="profile-nav">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Информация</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-orders" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Заказы в работе</button>
+        <button class="nav-link" id="nav-completed-orders-tab" data-bs-toggle="tab" data-bs-target="#nav-completed-orders" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Выполненные заказы</button>
+        <button class="nav-link" data-id="nav-portfolio" id="nav-portfolio-tab" data-bs-toggle="tab" data-bs-target="#nav-portfolio" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Портфолио</button>
+        <button class="nav-link" data-id="nav-dashboard" id="nav-dashboard-tab" data-bs-toggle="tab" data-bs-target="#nav-dashboard" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Статистика</button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="container profile-container">
+          <img src="" alt="" class="img-thumbnail">
+          {{!-- {{#if user}} --}}
+          <div>
+            <p class="h2">Имя{{this.name}} Фамилия{{this.lastName}}</p>
+            <p class="lead">@Никнейм{{this.username}}</p>
+            <p>E-mail: {{this.email}}</p>
+            <p>Телефон: {{this.phone}}</p>
+            <span>Мои категории:</span>
+            <p> 
+              {{#each this.categories}}
+              <a href="{{this._id}}">{{this.title}}</a>  
+              {{/each}}
+            </p>
+          </div>
+          <div>
+            <article>{{this.about}}</article>
+          </div>
+          {{!-- {{/if}} --}}
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="container profile-container success">
+          <div class="created">
+            <div class="profile-header">
+              <h1>Мои заказы</h1>
+            </div>
+            <p class="lead">Гномы-строители еще не завершили эту локацию, но вы всегда можете зайти попозже :)</p>
+            {{#each this.orders}}
+              <h3>{{this.title}}</h3>
+              <p class="lead">{{this.category}}</p>
+              <article>{{this.description}}</article>
+              <p>{{this.article}}</p>
+              <p>{{this.deadline}}</p>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-completed-orders" role="tabpanel" aria-labelledby="nav-plans-tab">
+        <div class="container profile-container success">
+          <div class="created">
+            <div class="profile-header">
+              <h1>Выполненные заказы</h1>
+            </div>
+            <p class="lead">Гномы-строители еще не завершили эту локацию, но вы всегда можете зайти попозже :)</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-portfolio" role="tabpanel" aria-labelledby="nav-create-tab">
+        <div class="profile-header">
+          <h1>Портфолио</h1>
+        </div>
+        <form action="" method="POST">
+          <div class="mb-3">
+            <label for="formFileMultiple" class="form-label">Загрузить примеры работ</label>
+            <input name="myWorks" class="form-control" type="file" id="formFileMultiple" multiple>
+          </div>
+          <button class="btn btn-primary" type="submit">Загрузить</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="nav-dashboard" role="tabpanel" aria-labelledby="nav-dashboard-tab">
+        <div class="profile-header">
+          <h1>Статистика</h1>
+        </div>
+      </div>
+    </div>
+  </main>
+{{else}}
+  <main class="profile-main">
+    <nav class="profile-nav">
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Информация</button>
+        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-orders" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Заказы</button>
+        <button class="nav-link" data-id="nav-dashboard" id="nav-dashboard-tab" data-bs-toggle="tab" data-bs-target="#nav-dashboard" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Статистика</button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="container profile-container">
+          <img src="" alt="" class="img-thumbnail">
+          {{!-- {{#if user}} --}}
+          <div>
+            <p class="h2">Имя{{user.firstName}} Фамилия{{user.lastName}}</p>
+            <p class="lead">@Никнейм{{user.username}}</p>
+            <p>E-mail: {{user.email}}</p>
+            <p>Телефон: {{user.phone}}</p>
+          </div>
+          {{!-- {{/if}} --}}
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <div class="container profile-container success">
+          <div class="created">
+            <div class="profile-header">
+              <h1>Мои заказы</h1>
+            </div>
+            <p class="lead">Гномы-строители еще не завершили эту локацию, но вы всегда можете зайти попозже :)</p>
+            {{#each user.orders}}
+              <h3>{{this.title}}</h3>
+              <p class="lead">{{this.category}}</p>
+              <article>{{this.description}}</article>
+              <p>{{this.article}}</p>
+              <p>{{this.deadline}}</p>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="nav-dashboard" role="tabpanel" aria-labelledby="nav-dashboard-tab">
+        <div class="profile-header">
+          <h1>Статистика</h1>
+        </div>
+      </div>
+    </div>
+  </main>
+{{/if}}

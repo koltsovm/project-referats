@@ -4,12 +4,12 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   const allExecutors = await Executor.find();
-  res.render('executors', { allExecutors });
+  res.render('executor/executors', { allExecutors });
 });
-router.get('/:id', (req, res) => {
+router.get('/:id', async(req, res) => {
   const { id } = req.params;
   const executor = await Executor.findById(id);
-  res.render('executor', { executor });
+  res.render('executor/executor', { executor });
 })
 
 module.exports = router;

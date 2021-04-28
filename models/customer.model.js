@@ -12,7 +12,7 @@ const customerSchema = new Schema(
     rating: Number,
     rewiews: [{ type: Schema.Types.ObjectId, ref: 'Rewiew' }],
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 module.exports = model('Customer', customerSchema);

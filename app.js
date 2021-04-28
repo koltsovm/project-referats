@@ -8,10 +8,9 @@ const MongoStore = require('connect-mongo');
 const dbConnect = require('./db/dbConnect');
 const indexRouter = require('./routes/index');
 const executorsRouter = require('./routes/executors');
-const orderRouter = require('./routes/orders/order')
+const orderRouter = require('./routes/orders/order');
 const profileRouter = require('./routes/profile/profile');
 const registrationRouter = require('./routes/registration/registration');
-const seed = require('./db/seed');
 
 const mongoUrl = process.env.DATABASE_STRING;
 
@@ -45,7 +44,7 @@ app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/registration', registrationRouter);
 app.use('/executors', executorsRouter);
-app.use('/orders', orderRouter)
+app.use('/orders', orderRouter);
 
 // Добавляем юзера во все hbs
 app.use((req, res, next) => {
@@ -58,7 +57,10 @@ app.use((req, res, next) => {
 //  Для таких ситуаций используется код ошибки 404.
 //  Создаём небольшое middleware, которое генерирует соответствующую ошибку.
 app.use((req, res, next) => {
-  const error = createError(404, 'Запрашиваемой страницы не существует на сервере.');
+  const error = createError(
+    404,
+    'Запрашиваемой страницы не существует на сервере.'
+  );
   next(error);
 });
 
@@ -82,7 +84,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = error;
 
-  // Задаём в будущем ответе статус ошибки. Берём его из объекта ошибки, если он там есть. 
+  // Задаём в будущем ответе статус ошибки. Берём его из объекта ошибки, если он там есть.
   // В противно случае записываем универсальный стату ошибки на сервере - 500.
   res.status(err.status || 500);
   // Формируем HTML-текст из шаблона "error.hbs" и отправляем его на клиент в качестве ответа.

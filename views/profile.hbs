@@ -1,4 +1,4 @@
-{{!-- {{#if executor}} --}}
+{{#if executor}}
   <main class="profile-main">
     <nav class="profile-nav">
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -15,19 +15,19 @@
           <img src="" alt="" class="img-thumbnail">
           {{!-- {{#if user}} --}}
           <div>
-            <p class="h2">Имя{{user.name}} Фамилия{{user.lastName}}</p>
-            <p class="lead">@Никнейм{{user.username}}</p>
-            <p>E-mail: {{user.email}}</p>
-            <p>Телефон: {{user.phone}}</p>
+            <p class="h2">Имя{{this.name}} Фамилия{{this.lastName}}</p>
+            <p class="lead">@Никнейм{{this.username}}</p>
+            <p>E-mail: {{this.email}}</p>
+            <p>Телефон: {{this.phone}}</p>
             <span>Мои категории:</span>
             <p> 
-              {{#each user.categories}}
-              <a href="{{user._id}}">{{user.title}}</a>  
+              {{#each this.categories}}
+              <a href="{{this._id}}">{{this.title}}</a>  
               {{/each}}
             </p>
           </div>
           <div>
-            <article>{{user.about}}</article>
+            <article>{{this.about}}</article>
           </div>
           {{!-- {{/if}} --}}
         </div>
@@ -39,7 +39,7 @@
               <h1>Мои заказы</h1>
             </div>
             <p class="lead">Гномы-строители еще не завершили эту локацию, но вы всегда можете зайти попозже :)</p>
-            {{#each user.orders}}
+            {{#each this.orders}}
               <h3>{{this.title}}</h3>
               <p class="lead">{{this.category}}</p>
               <article>{{this.description}}</article>
@@ -78,7 +78,7 @@
       </div>
     </div>
   </main>
-{{!-- {{else}} --}}
+{{else}}
   <main class="profile-main">
     <nav class="profile-nav">
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -125,4 +125,4 @@
       </div>
     </div>
   </main>
-{{!-- {{/if}} --}}
+{{/if}}

@@ -10,7 +10,9 @@ router
     res.render('registration/registration');
   })
   .post(async (req, res) => {
-    const { username, phone, email, password } = req.body;
+    const {
+      username, phone, email, password,
+    } = req.body;
     try {
       const existingCustomer = await Customer.findOne({ username, email });
       const existingExecutor = await Executor.findOne({ username, email });

@@ -1,3 +1,4 @@
+<script defer src="/js/profile.js"></script>
 {{#if executor}}
   <main class="profile-main">
     <nav class="profile-nav">
@@ -12,7 +13,19 @@
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <div class="container profile-container">
-          <img src="" alt="" class="img-thumbnail">
+          <div class="avatar-container">
+            {{#if executor.avatar}}
+            <img src="/img/avatar/{{executor.avatar}}" alt="avatar" class="img-thumbnail avatar">
+            <div class="middle">
+              <button id="avatar-edit-button" class="text btn btn-primary">Сменить аватар</button>
+            </div>
+            {{else}}
+            <img src="/img/avatar/default.png" alt="avatar" class="img-thumbnail avatar">
+            <div class="middle">
+              <button id="avatar-edit-button" class="text btn btn-primary">Сменить аватар</button>
+            </div>
+            {{/if}}
+          </div>
           {{!-- {{#if user}} --}}
           <div>
             <p class="h2">Имя{{this.name}} Фамилия{{this.lastName}}</p>
@@ -126,3 +139,27 @@
     </div>
   </main>
 {{/if}}
+
+{{!-- Modal window for avatar editing --}}
+<div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="avatarModalLabel">Загрузите новый аватар</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="" method="post">
+        <div class="modal-body">
+            <div class="mb-3">
+              {{!-- <label for="avatarFile" class="form-label">Default file input example</label> --}}
+              <input class="form-control" type="file" id="avatarFile" name="avatarFile" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          <button id="avatar-upload" type="button" data-id="avatar-upload" class="btn btn-primary">Загрузить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

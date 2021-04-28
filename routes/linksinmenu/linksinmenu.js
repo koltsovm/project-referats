@@ -1,11 +1,11 @@
-const { Router } = require('express');
-const Categoris = require('../../models/category.model');
+// const { Router } = require('express');
+// const Category = require('../../models/category.model');
 
-const router = Router();
+// const router = Router();
 
-router.get('/', async (req, res) => {
-  const categories = await Categoris.find();
-  res.render('find', { categories });
-});
+// router.get('/', async (req, res) => {
+//   const categories = await Category.find();
+//   res.render('find', { categories });
+// });
 
-module.exports = router;
+// module.exports = router;

@@ -16,3 +16,8 @@
   margin: 0 auto;
   padding: 2vh;
 }
+
+.form-container {
+  max-width: 600px;
+  margin: 5vh auto;
+}

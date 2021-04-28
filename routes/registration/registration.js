@@ -72,5 +72,14 @@ router
       });
     }
   });
+  router.route('/logout')
+    .get((req, res) => {
+      if (req.session) {
+        req.session.destroy(function(err) {
+            if (err) return console.log(err);
+            return res.redirect('/');
+        });
+      }
+    })
 
 module.exports = router;

@@ -13,6 +13,10 @@ router.get('/', async (req, res) => {
   res.render('orders/order', { categories });
 });
 
+router.get('/fillyourorder', (req, res) => {
+  res.render('orders/form');
+})
+
 router.post('/', async (req, res) => {
   const user = await Customer.findOne(username);
   const { title, description, deadline, categoryId} = req.body; // получаем заказ и создаем документ с этим заказом

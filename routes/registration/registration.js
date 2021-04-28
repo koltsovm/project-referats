@@ -10,33 +10,30 @@ router
     res.render('registration/registration');
   })
   .post(async (req, res) => {
+    const { username, phone, email, password } = req.body;
     try {
-      const { username, phone, email, password } = req.body;
-      const existingCustomer = await Customer.findOne({ username });
-      const existingExecutor = await Executor.findOne({ username });
-      if (!existingCustomer && !existingExecutor) {
-        if (req.body.typeuser === 'customer') {
-          const newCustomer = await Customer.create({
-            username,
-            phone,
-            email,
-            password,
-          });
-          req.session.username = newCustomer.username;
-          req.session.user_status = 'customer';
-        } else {
-          const newExecutor = await Executor.create({
-            username,
-            email,
-            phone,
-            password,
-          });
-          req.session.username = newExecutor.username;
-          req.session.user_status = 'executor';
-        }
+      const existingCustomer = await Customer.findOne({ username, email });
+      const existingExecutor = await Executor.findOne({ username, email });
+      if (!existingCustomer && req.body.typeuser === 'customer') {
+        const newCustomer = await Customer.create({
+          username,
+          phone,
+          email,
+          password,
+        });
+        req.session.username = newCustomer.username;
+        req.session.user_status = 'customer';
       }
-
-      return res.render('index', { username }); // заменить hbs path если необходимо
+      if (!existingExecutor && req.body.typeuser === 'executor') {
+        const newExecutor = await Executor.create({
+          username,
+          email,
+          phone,
+          password,
+        });
+        req.session.username = newExecutor.username;
+        req.session.user_status = 'executor';
+      }
     } catch (error) {
       return res.render('registration/error', {
         errorMessage: 'Что-то пошло не так!',
@@ -44,6 +41,8 @@ router
         passwordWrong: '-- Поле для ввода пароля не должно быть пустым',
       });
     }
+
+    return res.render('index', { username }); // заменить hbs path если необходимо
   });
 
 router
@@ -52,18 +51,27 @@ router
     res.render('registration/login');
   })
   .post(async (req, res) => {
+    const { email, password } = req.body;
     try {
-      const { email, password } = req.body;
       const existingCustomer = await Customer.findOne({ email, password });
       const existingExecutor = await Executor.findOne({ email, password });
       if (existingCustomer) {
         req.session.username = existingCustomer.username;
         req.session.user_status = 'customer';
-      } else {
-        req.session.username = existingExecutor.username;
-        req.session.user_status = 'execetor';
       }
-      res.redirect('/'); // <----- вставить сюда хбс личного кабинета!!!
+
+      if (existingExecutor) {
+        req.session.username = existingExecutor.username;
+        req.session.user_status = 'executor';
+      }
+
+      if (!existingCustomer && !existingExecutor) {
+        return res.render('registration/error', {
+          errorMessage: 'Упс! Что-то пошло не так..',
+          usernameWrong: '-- Нет пользователя с таким email',
+          passwordWrong: '--   или паролем',
+        });
+      }
     } catch (error) {
       res.render('registration/error', {
         errorMessage: 'Упс! Что-то пошло не так..',
@@ -71,6 +79,13 @@ router
         passwordWrong: '--   или паролем',
       });
     }
+    const { username } = req.session;
+    return res.render('index', { username }); // <----- вставить сюда хбс личного кабинета!!!
   });
+
+router.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
 
 module.exports = router;

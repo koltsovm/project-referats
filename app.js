@@ -22,6 +22,7 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(morgan('dev'));
 
 const options = {
   store: MongoStore.create({ mongoUrl }),
@@ -47,6 +48,7 @@ app.use('/orders', orderRouter);
 // Добавляем юзера во все hbs
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
+  console.log(res.locals.username);
   next();
 });
 

@@ -9,10 +9,13 @@ const dbConnect = require('./db/dbConnect');
 const indexRouter = require('./routes/index');
 const profileRouter = require('./routes/profile/profile');
 const registrationRouter = require('./routes/registration/registration');
+const seed = require('./db/seed');
 
 const mongoUrl = process.env.DATABASE_STRING;
 
 const app = express();
+
+seed();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

@@ -7,6 +7,8 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const dbConnect = require('./db/dbConnect');
 const indexRouter = require('./routes/index');
+const executorsRouter = require('./routes/executors');
+const orderRouter = require('./routes/orders/order')
 const profileRouter = require('./routes/profile/profile');
 const registrationRouter = require('./routes/registration/registration');
 const seed = require('./db/seed');
@@ -42,6 +44,8 @@ app.use(sessionMiddleware);
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/registration', registrationRouter);
+app.use('/executors', executorsRouter);
+app.use('/orders', orderRouter)
 
 // Добавляем юзера во все hbs
 app.use((req, res, next) => {

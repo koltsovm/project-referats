@@ -11,9 +11,7 @@ router
   })
   .post(async (req, res) => {
     try {
-      const {
-        username, phone, email, password,
-      } = req.body;
+      const { username, phone, email, password } = req.body;
       const existingCustomer = await Customer.findOne({ username });
       const existingExecutor = await Executor.findOne({ username });
       if (!existingCustomer && !existingExecutor) {
@@ -36,10 +34,11 @@ router
           req.session.username = newExecutor.username;
           req.session.user_status = 'executor';
         }
-        res.render('index', { username }); // заменить hbs path если необходимо
       }
+
+      return res.render('index', { username }); // заменить hbs path если необходимо
     } catch (error) {
-      res.render('registration/error', {
+      return res.render('registration/error', {
         errorMessage: 'Что-то пошло не так!',
         usernameWrong: '-- Логин должен быть уникальным',
         passwordWrong: '-- Поле для ввода пароля не должно быть пустым',

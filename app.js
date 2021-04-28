@@ -21,11 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Add routers
-app.use('/', indexRouter);
-app.use('/profile', profileRouter);
-app.use('/registration', registrationRouter);
-
 const options = {
   store: MongoStore.create({ mongoUrl }),
   key: 'user_sid',
@@ -38,14 +33,18 @@ const options = {
 };
 
 const sessionMiddleware = session(options);
+app.use(sessionMiddleware);
+
+// Add routers
+app.use('/', indexRouter);
+app.use('/profile', profileRouter);
+app.use('/registration', registrationRouter);
 
 // Добавляем юзера во все hbs
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
   next();
 });
-
-app.use(sessionMiddleware);
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.
 //  Это значит, что искомого раздела просто нет на сайте.

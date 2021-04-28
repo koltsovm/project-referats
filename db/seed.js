@@ -40,7 +40,7 @@ async function seeder() { // засеим базу
   allCategoris.push(new Category({ title: 'Экономика' }));
   allCategoris.push(new Category({ title: 'Юриспруденция' }));
   allCategoris.push(new Category({ title: 'Другое' }));
-
+  await Category.deleteMany()
   await Category.insertMany(allCategoris);
   await disconnect();
 }

@@ -63,7 +63,8 @@ router
         req.session.username = existingExecutor.username;
         req.session.user_status = 'execetor';
       }
-      res.redirect('/'); // <----- вставить сюда хбс личного кабинета!!!
+      console.log('hello!')
+      return res.redirect('/'); // <----- вставить сюда хбс личного кабинета!!!
     } catch (error) {
       res.render('registration/error', {
         errorMessage: 'Упс! Что-то пошло не так..',

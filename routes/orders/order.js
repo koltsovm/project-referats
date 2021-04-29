@@ -14,14 +14,14 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/fillyourorder', (req, res) => {
-  res.render('orders/form');
+  res.render('orders/form', { layout: false });
 })
 
 router.post('/', async (req, res) => {
   const user = await Customer.findOne(username);
   const { title, description, deadline, categoryId} = req.body; // получаем заказ и создаем документ с этим заказом
   await Order.create({title, category: categoryId, description, customer: user.id, deadline });
-  res.redirect('');
+  res.redirect('/');
 });
 
 

@@ -24,6 +24,7 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(morgan('dev'));
 
 const options = {
   store: MongoStore.create({ mongoUrl }),
@@ -39,18 +40,18 @@ const options = {
 const sessionMiddleware = session(options);
 app.use(sessionMiddleware);
 
+// Добавляем юзера во все hbs
+app.use((req, res, next) => {
+  res.locals.username = req.session.username;
+  next();
+});
+
 // Add routers
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/registration', registrationRouter);
 app.use('/executors', executorsRouter);
 app.use('/orders', orderRouter);
-
-// Добавляем юзера во все hbs
-app.use((req, res, next) => {
-  res.locals.username = req.session.username;
-  next();
-});
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.
 //  Это значит, что искомого раздела просто нет на сайте.
@@ -60,8 +61,8 @@ app.use((req, res, next) => {
   const error = createError(
     404,
     'Запрашиваемой страницы не существует на сервере.'
-  );
-  next(error);
+    );
+    next(error);
 });
 
 // Отлавливаем HTTP-запрос с ошибкой и отправляем на него ответ.

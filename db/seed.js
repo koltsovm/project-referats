@@ -1,10 +1,8 @@
-require('dotenv').config();
 const { disconnect } = require('mongoose');
-const { dbConnect } = require('./dbConnect');
+const dbConnect = require('./dbConnect');
 const Category = require('../models/category.model');
 
-// dbConnect();
-// const path = process.env.DATABASE_STRING;
+dbConnect();
 
 async function seeder() { // засеим базу
   await dbConnect;
@@ -45,6 +43,4 @@ async function seeder() { // засеим базу
   await disconnect();
 }
 
-// seeder();
-
-module.exports = seeder;
+seeder();

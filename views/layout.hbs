@@ -22,7 +22,7 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           {{#if username}}
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/profile">Профиль {{username}}</a>
+              <a class="nav-link active" aria-current="page" href="/profile">{{username}}</a>
             </li>
           {{/if}}
           <li class="nav-item">
@@ -63,7 +63,7 @@
           </li>
           {{#if username}}
             <li class="nav-item">
-              <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Выйти</a>
+              <a class="nav-link" href="/registration/logout" tabindex="-1" aria-disabled="true">Выйти</a>
             </li>
           {{else}}
             <li class="nav-item">
@@ -73,7 +73,6 @@
               <a class="nav-link" href="/registration" tabindex="-1" aria-disabled="true">Зарегистрироваться</a>
             </li>
           {{/if}}
-
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">

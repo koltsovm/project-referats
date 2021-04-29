@@ -1,5 +1,75 @@
+#body-wrapper {
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
 .centered {
   text-align: center;
+}
+
+.btn-primary {
+  box-shadow: 5px 5px 5px black;
+}
+
+.main-page-categories {
+  position: absolute;
+  top: 30vh;
+  left: 25vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 50vw;
+  margin: 0 auto;
+  background-color: bisque;
+  border-radius: 10px;
+  padding: 2vh;
+}
+
+.main-category-links {
+  text-decoration: none;
+}
+
+.executors-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 70vw;
+  margin: 12vh auto 5vh;
+}
+
+.executor-card {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px;
+  margin: 2vh;
+  padding: 5px;
+  width: 20vw;
+}
+
+.exec-card-img {
+  margin: 10px;
+}
+
+.exec-card-description {
+  margin: 10px;
+  margin-right: 0;
+  padding: 5px;
+}
+
+.card-text {
+ text-overflow: ellipsis;
+}
+
+.card-img {
+  max-width: 3vw;
+  border-radius: 50%;
+}
+
+.exec-card-link {
+  text-decoration: none;
+  color: black;
 }
 
 .profile-header {
@@ -71,6 +141,7 @@
   width: 40vw;
   height: 50vh;
   margin-left: 5%;
+}
 
 .error {
   display: flex;
@@ -90,6 +161,11 @@
   margin-top: 2vh;
 }
 
+.header-main {
+  text-align: center;
+  margin-top: 0;
+}
+
 #category-container {
   display: flex;
   justify-content: space-between;
@@ -103,52 +179,96 @@
 }
 
 .rating-area {
-	overflow: hidden;
-	width: 265px;
-	margin: 0 auto;
+  overflow: hidden;
+  width: 265px;
+  margin: 0 auto;
 }
 .rating-area:not(:checked) > input {
-	display: none;
+  display: none;
 }
 .rating-area:not(:checked) > label {
-	float: right;
-	width: 42px;
-	padding: 0;
-	cursor: pointer;
-	font-size: 32px;
-	line-height: 32px;
-	color: lightgrey;
-	text-shadow: 1px 1px #bbb;
+  float: right;
+  width: 42px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 32px;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
 }
 .rating-area:not(:checked) > label:before {
-	content: '★';
+  content: '★';
 }
 .rating-area > input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px #c60;
+  color: gold;
+  text-shadow: 1px 1px #c60;
 }
 .rating-area:not(:checked) > label:hover,
 .rating-area:not(:checked) > label:hover ~ label {
-	color: gold;
+  color: gold;
 }
 .rating-area > input:checked + label:hover,
 .rating-area > input:checked + label:hover ~ label,
 .rating-area > input:checked ~ label:hover,
 .rating-area > input:checked ~ label:hover ~ label,
 .rating-area > label:hover ~ input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px goldenrod;
+  color: gold;
+  text-shadow: 1px 1px goldenrod;
 }
 .rate-area > label:active {
-	position: relative;
+  position: relative;
 }
 
-/* .img-fluid {
-  height: 400px;
-} */
+.footer {
+  min-height: 25vh;
+}
 
-#idForImg {
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  min-height: 25vh;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: right;
+}
+
+#imageMain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url(/img/pictures/rabstol_net_books_04.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 100vw;
+  min-height: 40vh;
+  margin: 0;
+}
+
+#imageMain .header {
+  color: bisque;
+  text-shadow: 5px 5px 5px black;
+}
+
+/* 
+.idForImg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-image: url(/img/pictures/1025.png);
   min-width: 100vw;
-  min-height: 30vh;
-}
+  min-height: 50vh;
+} */

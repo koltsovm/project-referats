@@ -33,7 +33,7 @@ const options = {
   resave: false,
   saveUninitialized: false,
   cookie: {
-    expires: 1000 * 60 * 10,
+    expires: 10000 * 60 * 10,
   },
 };
 
@@ -44,6 +44,7 @@ app.use(sessionMiddleware);
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
   res.locals.categories = req.session.categories;
+  res.locals.executors = req.session.executors;
   next();
 });
 

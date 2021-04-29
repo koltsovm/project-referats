@@ -1,6 +1,24 @@
-<div id="idForImg">
-  <h1 class="header">ГЛАВНАЯ СТРАНИЦА</h1>
+<div id="imageMain">
+  <h1 class="header">РЕФЕРАТЫ БЕЗ СМС И РЕГИСТРАЦИИ</h1>
   <div class="container centered">
-  <a class="btn btn-primary" href="/orders" role="button">Разместить заказ</a>
+    <a class="btn btn-primary" href="/orders" role="button">Разместить заказ</a>
   </div>
+  <div class="main-page-categories">
+    {{#each categories}}
+    <a class="main-category-links" href="/categories/{{this.id}}" role="button">{{this.title}}</a>
+    {{/each}}
+  </div>
+</div>
+<div class="executors-container">
+  {{#each executors}}
+    <div class="executor-card">
+      <div class="exec-card-img">
+        <img class="card-img" src="/img/previews/{{this.avatar}}" alt="avatar">
+      </div>
+      <div class="exec-card-description">
+        <p><a class="exec-card-link" href="/executors/{{this.id}}"><b>{{this.firstName}} {{this.lastName}}</b></a> <sup>@{{this.username}}</sup></p>
+        <article class="card-text">{{this.about}}</article>
+      </div>
+    </div>
+  {{/each}}
 </div>

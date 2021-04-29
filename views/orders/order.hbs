@@ -1,7 +1,9 @@
-<div id="category-container">
-  <h1>Выберите тему</h1>
-  {{#each categories}}
+<div id="form-container">
+  <div id="category-container">
+    <h1>Выберите тему</h1>
+    {{#each categories}}
     <button class="button-category" data-id="{{this.id}}" data-title="{{this.title}}">{{this.title}}</button>
-  {{/each}}
+    {{/each}}
   </div>
+</div>
 </div>

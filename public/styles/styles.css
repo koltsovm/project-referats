@@ -1,3 +1,7 @@
+#body-wrapper {
+  min-height: 100vh;
+}
+
 .centered {
   text-align: center;
 }
@@ -71,6 +75,7 @@
   width: 40vw;
   height: 50vh;
   margin-left: 5%;
+}
 
 .error {
   display: flex;
@@ -103,42 +108,76 @@
 }
 
 .rating-area {
-	overflow: hidden;
-	width: 265px;
-	margin: 0 auto;
+  overflow: hidden;
+  width: 265px;
+  margin: 0 auto;
 }
 .rating-area:not(:checked) > input {
-	display: none;
+  display: none;
 }
 .rating-area:not(:checked) > label {
-	float: right;
-	width: 42px;
-	padding: 0;
-	cursor: pointer;
-	font-size: 32px;
-	line-height: 32px;
-	color: lightgrey;
-	text-shadow: 1px 1px #bbb;
+  float: right;
+  width: 42px;
+  padding: 0;
+  cursor: pointer;
+  font-size: 32px;
+  line-height: 32px;
+  color: lightgrey;
+  text-shadow: 1px 1px #bbb;
 }
 .rating-area:not(:checked) > label:before {
-	content: '★';
+  content: '★';
 }
 .rating-area > input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px #c60;
+  color: gold;
+  text-shadow: 1px 1px #c60;
 }
 .rating-area:not(:checked) > label:hover,
 .rating-area:not(:checked) > label:hover ~ label {
-	color: gold;
+  color: gold;
 }
 .rating-area > input:checked + label:hover,
 .rating-area > input:checked + label:hover ~ label,
 .rating-area > input:checked ~ label:hover,
 .rating-area > input:checked ~ label:hover ~ label,
 .rating-area > label:hover ~ input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px goldenrod;
+  color: gold;
+  text-shadow: 1px 1px goldenrod;
 }
 .rate-area > label:active {
-	position: relative;
+  position: relative;
+}
+
+.footer {
+  min-height: 25vh;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  min-height: 25vh;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: right;
+}
+
+#imageMain {
+  background-image: url(/img/IMG_1051.jpg);
+  background-repeat: no-repeat;
+  
+  min-width: 100vw;
+  min-height: 30vh;
 }

@@ -33,7 +33,7 @@ const options = {
   resave: false,
   saveUninitialized: false,
   cookie: {
-    expires: 1000 * 60 * 10,
+    expires: 10000 * 60 * 10,
   },
 };
 

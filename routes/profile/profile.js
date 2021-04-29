@@ -24,7 +24,7 @@ router
       if (req.session.user_status === 'executor') {
         const executor = await Executor.findOne({
           username: req.session.username,
-        });
+        }).populate('categories');
         return res.render('profile', { executor });
       }
     } catch (error) {
@@ -47,18 +47,22 @@ router
       if (req.session.user_status === 'customer') {
         await Customer.findOneAndUpdate(
           { username: req.session.username },
-          { avatar: req.file.filename },
+          { avatar: req.file.filename }
         );
+
+        return res.json({ image: `${req.file.filename}` });
       }
 
       if (req.session.user_status === 'executor') {
         await Executor.findOneAndUpdate(
           { username: req.session.username },
-          { avatar: req.file.filename },
+          { avatar: req.file.filename }
         );
+
+        return res.json({ image: `${req.file.filename}` });
       }
     }
-    res.render('profile', { layout: false });
+    return res.json({ image: `${req.file.filename}` });
   })
   .put(async (req, res) => {
     res.render('profile');

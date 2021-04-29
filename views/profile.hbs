@@ -34,8 +34,8 @@
             <p>Телефон: {{this.phone}}</p>
             <span>Мои категории:</span>
             <p> 
-              {{#each this.categories}}
-              <a href="{{this._id}}">{{this.title}}</a>  
+              {{#each executor.categories}}
+              <a href="/categories/{{this._id}}">{{this.title}}</a>  
               {{/each}}
             </p>
           </div>

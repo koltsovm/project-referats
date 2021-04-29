@@ -67,6 +67,10 @@
   max-width: 600px;
   margin: 5vh auto;
 }
+#customer-new-project-form {
+  width: 40vw;
+  height: 50vh;
+  margin-left: 5%;
 
 .error {
   display: flex;

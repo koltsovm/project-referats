@@ -1,11 +1,13 @@
 const { Router } = require('express');
 const multer = require('multer');
 const jimp = require('jimp');
+const bcrypt = require('bcrypt');
 const Customer = require('../../models/customer.model');
 const Executor = require('../../models/executor.model');
 const Category = require('../../models/category.model');
 
 const uploadImage = multer({ dest: './public/img/avatar' });
+const saltRound = 7;
 
 const router = Router();
 
@@ -22,7 +24,7 @@ router
       username,
       phone,
       email,
-      password,
+      password: plainPass,
       categories,
       about,
     } = req.body;
@@ -46,6 +48,7 @@ router
       const existingCustomer = await Customer.findOne({ username, email });
       const existingExecutor = await Executor.findOne({ username, email });
       if (!existingCustomer && req.body.typeuser === 'customer') {
+        const password = await bcrypt.hash(plainPass, saltRound);
         const newCustomer = await Customer.create({
           username,
           firstName,
@@ -72,6 +75,7 @@ router
           // });
         } else categoriesById.push(categories);
 
+        const password = await bcrypt.hash(plainPass, saltRound);
         const newExecutor = await Executor.create({
           username,
           firstName,
@@ -105,14 +109,20 @@ router
   .post(async (req, res) => {
     const { email, password } = req.body;
     try {
-      const existingCustomer = await Customer.findOne({ email, password });
-      const existingExecutor = await Executor.findOne({ email, password });
-      if (existingCustomer) {
+      const existingCustomer = await Customer.findOne({ email });
+      const existingExecutor = await Executor.findOne({ email });
+      if (
+        existingCustomer &&
+        (await bcrypt.compare(password, existingCustomer.password))
+      ) {
         req.session.username = existingCustomer.username;
         req.session.user_status = 'customer';
       }
 
-      if (existingExecutor) {
+      if (
+        existingExecutor &&
+        (await bcrypt.compare(password, existingExecutor.password))
+      ) {
         req.session.username = existingExecutor.username;
         req.session.user_status = 'executor';
       }
@@ -124,6 +134,8 @@ router
           passwordWrong: '--   или паролем',
         });
       }
+      console.log('hello!');
+      return res.redirect('/'); // <----- вставить сюда хбс личного кабинета!!!
     } catch (error) {
       res.render('registration/error', {
         errorMessage: 'Упс! Что-то пошло не так..',
@@ -134,6 +146,14 @@ router
     const { username } = req.session;
     return res.render('index', { username }); // <----- вставить сюда хбс личного кабинета!!!
   });
+router.route('/logout').get((req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) return console.log(err);
+      return res.redirect('/');
+    });
+  }
+});
 
 router.get('/logout', (req, res) => {
   req.session.destroy();

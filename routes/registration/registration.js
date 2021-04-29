@@ -62,7 +62,7 @@ router
       }
       if (!existingExecutor && req.body.typeuser === 'executor') {
         const categoriesById = [];
-        if (categories.length) {
+        if (typeof categories === 'object') {
           // eslint-disable-next-line no-restricted-syntax
           for (const item of categories) {
             // eslint-disable-next-line no-await-in-loop
@@ -73,7 +73,10 @@ router
           //   const cat = await Category.findOne({ title: el });
           //   categoriesById.push(cat.id);
           // });
-        } else categoriesById.push(categories);
+        } else if (categories) {
+          const cat = await Category.findOne({ title: categories });
+          categoriesById.push(cat);
+        }
 
         const password = await bcrypt.hash(plainPass, saltRound);
         const newExecutor = await Executor.create({

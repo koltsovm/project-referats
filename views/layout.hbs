@@ -25,9 +25,6 @@
               <a class="nav-link active" aria-current="page" href="/profile">{{username}}</a>
             </li>
           {{/if}}
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Задания
@@ -87,6 +84,21 @@
       </div>
     </div>
   </nav>
+  <div id="body-wrapper">
   {{{body}}}
+  </div>
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container-fluid footer-container">
+      <div class="footer-logo">
+        {{!-- <a class="navbar-brand" href="#">Fixed bottom</a> --}}
+        <p>Elbrus, 2021</p>
+      </div>
+      <div class="footer-content">
+        <a href="#">Пользовательское соглашение</a>
+        <br>
+        <p>По вопросам сотрудничества и багрепортов: <br> </p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

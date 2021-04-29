@@ -31,7 +31,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               {{#each categories}}
-                <li><a class="dropdown-item" href="categories/{{this.id}}">{{this.title}}</a></li>
+                <li><a class="dropdown-item" href="/categories/{{this.id}}">{{this.title}}</a></li>
               {{/each}}
               {{!-- <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><hr class="dropdown-divider"></li>
@@ -48,7 +48,7 @@
 
               {{!-- {{/each}} --}}
               {{#each categories}}
-              <li><a class="dropdown-item" href="/categories/{{this.id}}">{{this.title}}</a></li>
+              <li><a class="dropdown-item" href="categories/{{this._id}}">{{this.title}}</a></li>
               {{/each}}
               {{!-- <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><hr class="dropdown-divider"></li>

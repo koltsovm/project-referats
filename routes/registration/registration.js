@@ -149,14 +149,14 @@ router
     const { username } = req.session;
     return res.render('index', { username }); // <----- вставить сюда хбс личного кабинета!!!
   });
-router.route('/logout').get((req, res) => {
-  if (req.session) {
-    req.session.destroy((err) => {
-      if (err) return console.log(err);
-      return res.redirect('/');
-    });
-  }
-});
+// router.route('/logout').get((req, res) => {
+//   if (req.session) {
+//     req.session.destroy((err) => {
+//       if (err) return console.log(err);
+//       return res.redirect('/');
+//     });
+//   }
+// });
 
 router.get('/logout', (req, res) => {
   req.session.destroy();

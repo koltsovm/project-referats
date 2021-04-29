@@ -11,6 +11,7 @@ const executorsRouter = require('./routes/executors');
 const orderRouter = require('./routes/orders/order');
 const profileRouter = require('./routes/profile/profile');
 const registrationRouter = require('./routes/registration/registration');
+const categoriesRouter = require('./routes/categories/category');
 
 const mongoUrl = process.env.DATABASE_STRING;
 
@@ -54,6 +55,7 @@ app.use('/profile', profileRouter);
 app.use('/registration', registrationRouter);
 app.use('/executors', executorsRouter);
 app.use('/orders', orderRouter);
+app.use('/categories', categoriesRouter);
 
 // Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.
 //  Это значит, что искомого раздела просто нет на сайте.

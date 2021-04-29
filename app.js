@@ -41,6 +41,7 @@ app.use(sessionMiddleware);
 // Добавляем юзера во все hbs
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
+  res.locals.categories = req.session.categories;
   next();
 });
 

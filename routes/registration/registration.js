@@ -9,7 +9,6 @@ router
   .route('/')
   .get(async (req, res) => {
     const categories = await Category.find();
-    console.log(categories);
     res.render('registration/registration', { categories });
   })
   .post(async (req, res) => {

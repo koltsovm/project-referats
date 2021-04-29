@@ -1,3 +1,7 @@
+.centered {
+  text-align: center;
+}
+
 .profile-header {
   margin: 0 auto;
   text-align: center;
@@ -79,4 +83,17 @@
 
 .header {
   text-align: center;
+  margin-top: 2vh;
+}
+
+#category-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 75vw;
+  margin: 2vh auto;
+}
+
+.button-category {
+  margin: 1%;
 }

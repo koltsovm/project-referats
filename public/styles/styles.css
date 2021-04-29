@@ -1,9 +1,75 @@
 #body-wrapper {
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 .centered {
   text-align: center;
+}
+
+.btn-primary {
+  box-shadow: 5px 5px 5px black;
+}
+
+.main-page-categories {
+  position: absolute;
+  top: 30vh;
+  left: 25vw;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 50vw;
+  margin: 0 auto;
+  background-color: bisque;
+  border-radius: 10px;
+  padding: 2vh;
+}
+
+.main-category-links {
+  text-decoration: none;
+}
+
+.executors-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 70vw;
+  margin: 12vh auto 5vh;
+}
+
+.executor-card {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px;
+  margin: 2vh;
+  padding: 5px;
+  width: 20vw;
+}
+
+.exec-card-img {
+  margin: 10px;
+}
+
+.exec-card-description {
+  margin: 10px;
+  margin-right: 0;
+  padding: 5px;
+}
+
+.card-text {
+ text-overflow: ellipsis;
+}
+
+.card-img {
+  max-width: 3vw;
+  border-radius: 50%;
+}
+
+.exec-card-link {
+  text-decoration: none;
+  color: black;
 }
 
 .profile-header {
@@ -95,6 +161,11 @@
   margin-top: 2vh;
 }
 
+.header-main {
+  text-align: center;
+  margin-top: 0;
+}
+
 #category-container {
   display: flex;
   justify-content: space-between;
@@ -175,19 +246,29 @@
 }
 
 #imageMain {
-  background-image: url(/img/IMG_1051.jpg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url(/img/pictures/rabstol_net_books_04.jpg);
   background-repeat: no-repeat;
-  
+  background-position: center;
   min-width: 100vw;
-  min-height: 30vh;
+  min-height: 40vh;
+  margin: 0;
 }
 
-/* .img-fluid {
-  height: 400px;
-} */
+#imageMain .header {
+  color: bisque;
+  text-shadow: 5px 5px 5px black;
+}
 
-#idForImg {
+/* 
+.idForImg {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-image: url(/img/pictures/1025.png);
   min-width: 100vw;
-  min-height: 30vh;
-}
+  min-height: 50vh;
+} */

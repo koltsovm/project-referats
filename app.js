@@ -44,6 +44,7 @@ app.use(sessionMiddleware);
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
   res.locals.categories = req.session.categories;
+  res.locals.executors = req.session.executors;
   next();
 });
 

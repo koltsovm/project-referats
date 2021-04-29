@@ -1,11 +1,52 @@
 <div id="executor">
   <ul>
-    <li>{{executor.name}}</li>
+    <li>{{executor.username}}</li>
     <li>{{executor.firstName}}</li>
-    <li>{{executor.lastName}}</li>
-    <li>{{executor.email}}</li>
     <li>{{executor.categories}}</li>
+    <li>{{executor.rating}}</li>
     <li>{{executor.reviews}}</li>
   </ul>
-  <a href="/executors">Go back to freelancers</a>
 </div>
+
+
+<form action="" method="post" id="forFeedback" style="visibility: inherit;">
+
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="rating" id="inlineRadio1" value="1">
+  <label class="form-check-label" for="inlineRadio1">1</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="rating" id="inlineRadio2" value="2">
+  <label class="form-check-label" for="inlineRadio2">2</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="rating" id="inlineRadio3" value="3">
+  <label class="form-check-label" for="inlineRadio1">3</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="rating" id="inlineRadio4" value="4">
+  <label class="form-check-label" for="inlineRadio2">4</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="rating" id="inlineRadio5" value="5">
+  <label class="form-check-label" for="inlineRadio1">5</label>
+</div>
+
+
+<div class="mb-3">
+  <input type="text" class="hidden" value="{{executor.id}}" style="visibility: hidden;">
+  <label for="exampleFormControlInput1" class="form-label">Оставьте отзыв об этом исполнителе</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" name="datamail" placeholder="Ваша электронная почта">
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label" class="feedbackTextArea" >Отзыв</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="feedbackTextArea" placeholder="Опишите тему работу, срок выполнения, результат"></textarea>
+</div>
+<input class="btn btn-primary" type="submit" value="Опубликовать отзыв" class="buttonFeedback">
+</form>
+<div id="feedbackCantainer">
+  <p id="paragrafFB" style="visibility: hidden;">Отзывы об исполнителе {{executor.name}}</p>
+</div>
+ <div>
+ <a href="/executors">Вернуться назад ко всем исполнителям</a>
+ </div> 

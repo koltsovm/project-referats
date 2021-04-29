@@ -77,8 +77,8 @@ router
     } catch (error) {
       res.render('registration/error', {
         errorMessage: 'Упс! Что-то пошло не так..',
-        usernameWrong: '-- Нет пользователя с таким email',
-        passwordWrong: '--   или паролем',
+        usernameWrong: ' Нет пользователя с таким email',
+        passwordWrong: ' или паролем',
       });
     }
     const { username } = req.session;

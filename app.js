@@ -41,7 +41,6 @@ app.use(sessionMiddleware);
 // Добавляем юзера во все hbs
 app.use((req, res, next) => {
   res.locals.username = req.session.username;
-  console.log(res.locals.username);
   next();
 });
 
@@ -60,8 +59,8 @@ app.use((req, res, next) => {
   const error = createError(
     404,
     'Запрашиваемой страницы не существует на сервере.'
-  );
-  next(error);
+    );
+    next(error);
 });
 
 // Отлавливаем HTTP-запрос с ошибкой и отправляем на него ответ.

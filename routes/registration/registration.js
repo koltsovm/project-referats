@@ -99,6 +99,8 @@ router
           passwordWrong: '--   или паролем',
         });
       }
+      console.log('hello!')
+      return res.redirect('/'); // <----- вставить сюда хбс личного кабинета!!!
     } catch (error) {
       res.render('registration/error', {
         errorMessage: 'Упс! Что-то пошло не так..',
@@ -109,6 +111,15 @@ router
     const { username } = req.session;
     return res.render('index', { username }); // <----- вставить сюда хбс личного кабинета!!!
   });
+  router.route('/logout')
+    .get((req, res) => {
+      if (req.session) {
+        req.session.destroy(function(err) {
+            if (err) return console.log(err);
+            return res.redirect('/');
+        });
+      }
+    })
 
 router.get('/logout', (req, res) => {
   req.session.destroy();

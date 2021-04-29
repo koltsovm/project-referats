@@ -53,7 +53,7 @@ const seeder = async () => {
       title: 'Другое',
     },
   ];
-
+  
   await WorkType.insertMany(workTypes);
   mongoose.disconnect();
   console.log('Seeder finshed');

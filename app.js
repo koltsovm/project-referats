@@ -16,6 +16,8 @@ const mongoUrl = process.env.DATABASE_STRING;
 
 const app = express();
 
+// seed();
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 

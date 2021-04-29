@@ -11,8 +11,6 @@ const executorsRouter = require('./routes/executors');
 const orderRouter = require('./routes/orders/order');
 const profileRouter = require('./routes/profile/profile');
 const registrationRouter = require('./routes/registration/registration');
-const bcrypt = require('bcrypt');
-const saltRound = 10;
 
 const mongoUrl = process.env.DATABASE_STRING;
 

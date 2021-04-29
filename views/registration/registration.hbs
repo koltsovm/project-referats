@@ -1,7 +1,7 @@
 <script defer src="/js/registration.client.js"></script>
 <div class="container form-container">
   <h2 class="header">Пожалуйста, зарегистрируйтесь</h2>
-  <form action="" method="POST">
+  <form action="/registration" method="POST" enctype="multipart/form-data">
     <div class="mb-3">
       <label for="firstName" class="form-label">Имя <sup style="color: red;">*</sup></label>
       <input name="firstName"  type="text" class="form-control" id="firstName" aria-describedby="emailHelp" required>
@@ -65,7 +65,7 @@
     </div>
     <div class="mb-3">
       <label for="formFileMultiple" class="form-label">Загрузите аватарку</label>
-      <input class="form-control" type="file" id="formFileMultiple" multiple>
+      <input name="avatar" class="form-control" type="file" id="formFileMultiple" multiple>
     </div>
     <button id="submitButton" type="submit" class="btn btn-primary">Зарегистрироваться</button>
   </form>

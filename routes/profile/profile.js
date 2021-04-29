@@ -11,8 +11,6 @@ const router = Router();
 router
   .route('/')
   .get(async (req, res) => {
-    // res.render('profile');
-    // проверяем статус пользователя - добавить статус в req.session
     try {
       if (req.session.user_status === 'customer') {
         const customer = await Customer.findOne({

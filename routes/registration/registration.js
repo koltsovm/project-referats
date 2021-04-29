@@ -1,7 +1,11 @@
 const { Router } = require('express');
+const multer = require('multer');
+const jimp = require('jimp');
 const Customer = require('../../models/customer.model');
 const Executor = require('../../models/executor.model');
 const Category = require('../../models/category.model');
+
+const uploadImage = multer({ dest: './public/img/avatar' });
 
 const router = Router();
 
@@ -11,7 +15,7 @@ router
     const categories = await Category.find();
     res.render('registration/registration', { categories });
   })
-  .post(async (req, res) => {
+  .post(uploadImage.single('avatar'), async (req, res) => {
     const {
       firstName,
       lastName,
@@ -22,6 +26,22 @@ router
       categories,
       about,
     } = req.body;
+
+    let avatar = 'default.png';
+
+    if (req.file) {
+      jimp
+        .read(`${req.file.destination}/${req.file.filename}`)
+        .then((image) => {
+          image
+            .resize(100, 100)
+            .quality(70)
+            .write(`./public/img/previews/${req.file.filename}`);
+        });
+
+      avatar = req.file.filename;
+    }
+
     try {
       const existingCustomer = await Customer.findOne({ username, email });
       const existingExecutor = await Executor.findOne({ username, email });
@@ -39,16 +59,26 @@ router
       }
       if (!existingExecutor && req.body.typeuser === 'executor') {
         const categoriesById = [];
-        categories.forEach(async (el) => {
-          const cat = await Category.findOne({ title: el });
-          categoriesById.push(cat.id);
-        });
+        if (categories.length) {
+          // eslint-disable-next-line no-restricted-syntax
+          for (const item of categories) {
+            // eslint-disable-next-line no-await-in-loop
+            const cat = await Category.findOne({ title: item });
+            categoriesById.push(cat.id);
+          }
+          // await categories.map(async (el) => {
+          //   const cat = await Category.findOne({ title: el });
+          //   categoriesById.push(cat.id);
+          // });
+        } else categoriesById.push(categories);
+
         const newExecutor = await Executor.create({
           username,
           firstName,
           lastName,
           email,
           password,
+          avatar,
           about,
           phone,
           categories: categoriesById,

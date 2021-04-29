@@ -44,11 +44,13 @@
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Введите почту  <sup style="color: red;">*</sup></label>
       <input  name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    <p id="messageForFalseEmail"></p>
     </div>
       <div class="mb-3">
       <label for="exampleInputPhone" class="form-label">Введите номер телефона  <sup style="color: red;">*</sup></label>
-      <input type="tel"  name="phone" class="form-control" id="exampleInputPhone" aria-describedby="emailHelp" required>
+      <input type="number"  name="phone" class="form-control" id="exampleInputPhone" aria-describedby="emailHelp" required>
     <div id="emailHelp" class="form-text">Мы не разглашаем информацию третьим лицам.</div>
+    <p id="messageForFalsePhone"></p>
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">Придумайте пароль, от 6 символов  <sup style="color: red;">*</sup></label>
@@ -67,6 +69,6 @@
       <label for="formFileMultiple" class="form-label">Загрузите аватарку</label>
       <input name="avatar" class="form-control" type="file" id="formFileMultiple" multiple>
     </div>
-    <button id="submitButton" type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    <button id="submitButton" type="submit" class="btn btn-primary" onClick="validEmail();  validPhone();">Зарегистрироваться</button>
   </form>
 </div>

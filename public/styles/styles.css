@@ -142,3 +142,13 @@
 .rate-area > label:active {
 	position: relative;
 }
+
+/* .img-fluid {
+  height: 400px;
+} */
+
+#idForImg {
+  background-image: url(/img/pictures/1025.png);
+  min-width: 100vw;
+  min-height: 30vh;
+}

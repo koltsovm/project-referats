@@ -29,7 +29,7 @@
           {{!-- {{#if user}} --}}
           <div>
             <p class="h2">{{this.name}} {{this.lastName}}</p>
-            <p class="lead">@{{this.username}}</p>
+            <p class="lead">{{this.username}}</p>
             <p>E-mail: {{this.email}}</p>
             <p>Телефон: {{this.phone}}</p>
             <span>Мои категории:</span>
@@ -107,10 +107,10 @@
           <img src="" alt="" class="img-thumbnail">
           {{!-- {{#if user}} --}}
           <div>
-            <p class="h2">Имя{{user.firstName}} Фамилия{{user.lastName}}</p>
-            <p class="lead">@Никнейм{{user.username}}</p>
-            <p>E-mail: {{user.email}}</p>
-            <p>Телефон: {{user.phone}}</p>
+            <p class="h2">Имя: {{customer.firstName}} {{customer.lastName}}</p>
+            <p class="lead">Ник: {{customer.username}}</p>
+            <p>E-mail: {{customer.email}}</p>
+            <p>Телефон: {{customer.phone}}</p>
           </div>
           {{!-- {{/if}} --}}
         </div>

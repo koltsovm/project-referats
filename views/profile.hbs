@@ -1,4 +1,4 @@
-<script defer src="/js/profile.js"></script>
+<script defer src="/js/profile.client.js"></script>
 {{#if executor}}
   <main class="profile-main">
     <nav class="profile-nav">
@@ -15,12 +15,12 @@
         <div class="container profile-container">
           <div class="avatar-container">
             {{#if executor.avatar}}
-            <img src="/img/avatar/{{executor.avatar}}" alt="avatar" class="img-thumbnail avatar">
+            <img id="userAvatar" src="/img/avatar/{{executor.avatar}}" alt="avatar" class="img-thumbnail avatar">
             <div class="middle">
               <button id="avatar-edit-button" class="text btn btn-primary">Сменить аватар</button>
             </div>
             {{else}}
-            <img src="/img/avatar/default.png" alt="avatar" class="img-thumbnail avatar">
+            <img id="userAvatar" src="/img/avatar/default.png" alt="avatar" class="img-thumbnail avatar">
             <div class="middle">
               <button id="avatar-edit-button" class="text btn btn-primary">Сменить аватар</button>
             </div>
@@ -28,8 +28,8 @@
           </div>
           {{!-- {{#if user}} --}}
           <div>
-            <p class="h2">Имя{{this.name}} Фамилия{{this.lastName}}</p>
-            <p class="lead">@Никнейм{{this.username}}</p>
+            <p class="h2">{{this.name}} {{this.lastName}}</p>
+            <p class="lead">@{{this.username}}</p>
             <p>E-mail: {{this.email}}</p>
             <p>Телефон: {{this.phone}}</p>
             <span>Мои категории:</span>
@@ -40,6 +40,7 @@
             </p>
           </div>
           <div>
+            <p>О себе:</p>
             <article>{{this.about}}</article>
           </div>
           {{!-- {{/if}} --}}
@@ -158,6 +159,10 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
           <button id="avatar-upload" type="button" data-id="avatar-upload" class="btn btn-primary">Загрузить</button>
+          <button id="btn-hidden" class="btn btn-primary" type="button" hidden disabled>
+            <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+            Loading...
+          </button>
         </div>
       </form>
     </div>

@@ -1,17 +1,26 @@
 const { Router } = require('express');
 const Customer = require('../../models/customer.model');
 const Executor = require('../../models/executor.model');
+const Category = require('../../models/category.model');
 
 const router = Router();
 
 router
   .route('/')
-  .get((req, res) => {
-    res.render('registration/registration');
+  .get(async (req, res) => {
+    const categories = await Category.find();
+    res.render('registration/registration', { categories });
   })
   .post(async (req, res) => {
     const {
-      username, phone, email, password,
+      firstName,
+      lastName,
+      username,
+      phone,
+      email,
+      password,
+      categories,
+      about,
     } = req.body;
     try {
       const existingCustomer = await Customer.findOne({ username, email });
@@ -19,6 +28,8 @@ router
       if (!existingCustomer && req.body.typeuser === 'customer') {
         const newCustomer = await Customer.create({
           username,
+          firstName,
+          lastName,
           phone,
           email,
           password,
@@ -27,11 +38,20 @@ router
         req.session.user_status = 'customer';
       }
       if (!existingExecutor && req.body.typeuser === 'executor') {
+        const categoriesById = [];
+        categories.forEach(async (el) => {
+          const cat = await Category.findOne({ title: el });
+          categoriesById.push(cat.id);
+        });
         const newExecutor = await Executor.create({
           username,
+          firstName,
+          lastName,
           email,
-          phone,
           password,
+          about,
+          phone,
+          categories: categoriesById,
         });
         req.session.username = newExecutor.username;
         req.session.user_status = 'executor';

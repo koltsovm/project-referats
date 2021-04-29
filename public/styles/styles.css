@@ -1,3 +1,7 @@
+.centered {
+  text-align: center;
+}
+
 .profile-header {
   margin: 0 auto;
   text-align: center;
@@ -5,7 +9,8 @@
 
 .avatar-container {
   position: relative;
-  width: 20vw;
+  max-width: fit-content;
+  width: 12vw;
 }
 
 .avatar {
@@ -13,18 +18,18 @@
   display: block;
   width: 100%;
   height: auto;
-  transition: .5s ease;
+  transition: 0.5s ease;
   backface-visibility: hidden;
 }
 
 .middle {
-  transition: .5s ease;
+  transition: 0.5s ease;
   opacity: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%);
 }
 
 .avatar-container:hover .image {
@@ -63,6 +68,35 @@
   margin: 5vh auto;
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 10px;
+  background-color: rgb(247, 104, 104);
+}
+
+.error p {
+  margin: 7px auto;
+}
+
+.header {
+  text-align: center;
+  margin-top: 2vh;
+}
+
+#category-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 75vw;
+  margin: 2vh auto;
+}
+
+.button-category {
+  margin: 1%;
+}
 
 .rating-area {
 	overflow: hidden;

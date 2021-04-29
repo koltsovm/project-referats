@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   const categories = await Category.find();
-  res.locals.categories = categories;
+  req.session.categories = categories;
   res.render('index');
 });
 

@@ -6,9 +6,10 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   const categories = await Category.find();
-  req.session.executors = await Executor.find();
+  const executors = await Executor.find();
+  req.session.executors = executors;
   req.session.categories = categories;
-  res.render('index');
+  res.render('index', { categories, executors });
 });
 
 module.exports = router;

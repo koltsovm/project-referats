@@ -28,10 +28,10 @@
           </div>
           {{!-- {{#if user}} --}}
           <div>
-            <p class="h2">{{this.name}} {{this.lastName}}</p>
-            <p class="lead">{{this.username}}</p>
-            <p>E-mail: {{this.email}}</p>
-            <p>Телефон: {{this.phone}}</p>
+            <p class="h2">{{executor.firstName}} {{executor.lastName}}</p>
+            <p class="lead">{{executor.username}}</p>
+            <p>E-mail: {{executor.email}}</p>
+            <p>Телефон: {{executor.phone}}</p>
             <span>Мои категории:</span>
             <p> 
               {{#each executor.categories}}
@@ -41,7 +41,7 @@
           </div>
           <div>
             <p>О себе:</p>
-            <article>{{this.about}}</article>
+            <article>{{executor.about}}</article>
           </div>
           {{!-- {{/if}} --}}
         </div>

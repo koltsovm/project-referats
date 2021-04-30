@@ -29,7 +29,7 @@ if (categoryContainer) {
 const form = document.querySelector('#forFeedback');
 const feedbackTextArea = document.querySelector('.feedbackTextArea');
 const buttonFeedback = document.querySelector('.buttonFeedback');
-const fbContainer = document.querySelector('#feedbackCantainer');
+const fbContainer = document.querySelector('#feedbackContainer');
 const paragrafFB = document.querySelector('#paragrafFB');
 
 if (form) {
@@ -56,7 +56,8 @@ if (form) {
       newParagraf.innerText += result.fbFromJson;
       fbContainer.appendChild(newParagraf);
       // fbContainer.innerText += result;
-      form.style.visibility = 'hidden';
+      // form.style.visibility = 'hidden';
+      form.hidden = true;
     } else {
       console.log('erooor!', response.status);
     }

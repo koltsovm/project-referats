@@ -1,65 +1,96 @@
-<div id="executor">
-  <ul>
-    <li>Логин исполнителя: {{executor.username}}</li>
-    <li>Имя: {{executor.firstName}}</li>
-    <li>В каких категориях работает: {{executor.categories}}</li>
-    <li>Рейтинг: {{executor.rating}}</li>
-    <li>Все отзывы: {{executor.reviews}}</li>
-  </ul>
-</div>
+<div class="form-container">
+  <div class="back-link">
+    <a href="/executors">Вернуться ко всем исполнителям</a>
+  </div> 
+
+  {{!-- <div id="executor">
+    <ul>
+      <li>Логин исполнителя: {{executor.username}}</li>
+      <li>Имя: {{executor.firstName}}</li>
+      <li>В каких категориях работает: 
+        {{#each executor.categories}}
+        <a href="/categories/{{this._id}}">{{this.title}}</a> 
+        {{/each}}
+      </li>
+      <li>Рейтинг: {{executor.rating}}</li>
+      <li>Все отзывы: {{executor.reviews}}</li>
+    </ul>
+  </div> --}}
+  <div class="container profile-container">
+    <div class="avatar-container">
+      {{#if executor.avatar}}
+      <img id="userAvatar" src="/img/avatar/{{executor.avatar}}" alt="avatar" class="img-thumbnail avatar">
+      <div class="middle">
+        <button id="avatar-edit-button" class="text btn btn-primary">Сменить аватар</button>
+      </div>
+      {{else}}
+      <img id="userAvatar" src="/img/avatar/default.png" alt="avatar" class="img-thumbnail avatar">
+      <div class="middle">
+        <button id="avatar-edit-button" class="text btn btn-primary">Сменить аватар</button>
+      </div>
+      {{/if}}
+    </div>
+    <div>
+      <p class="h2">{{executor.firstName}} {{executor.lastName}}</p>
+      <p class="lead">@{{executor.username}}</p>
+      <span>Категории исполнителя:</span>
+      <p> 
+        {{#each executor.categories}}
+        <a href="/categories/{{this._id}}">{{this.title}}</a>  
+        {{/each}}
+      </p>
+    </div>
+    <div>
+      <p>О себе:</p>
+      <article>{{executor.about}}</article>
+    </div>
+  </div>
 
 
-<form action="" method="post" id="forFeedback" style="visibility: inherit;">
+  <form action="" method="post" id="forFeedback" style="visibility: inherit;">
 
-<div class="rating-area">
-	<input type="radio" id="star-5" name="rating" value="5">
-	<label for="star-5" title="Оценка «5»"></label>	
-	<input type="radio" id="star-4" name="rating" value="4">
-	<label for="star-4" title="Оценка «4»"></label>    
-	<input type="radio" id="star-3" name="rating" value="3">
-	<label for="star-3" title="Оценка «3»"></label>  
-	<input type="radio" id="star-2" name="rating" value="2">
-	<label for="star-2" title="Оценка «2»"></label>    
-	<input type="radio" id="star-1" name="rating" value="1">
-	<label for="star-1" title="Оценка «1»"></label>
-</div>
+  {{!-- <div class="rating-area">
+    <input type="radio" id="star-5" name="rating" value="5">
+    <label for="star-5" title="Оценка «5»"></label>	
+    <input type="radio" id="star-4" name="rating" value="4">
+    <label for="star-4" title="Оценка «4»"></label>    
+    <input type="radio" id="star-3" name="rating" value="3">
+    <label for="star-3" title="Оценка «3»"></label>  
+    <input type="radio" id="star-2" name="rating" value="2">
+    <label for="star-2" title="Оценка «2»"></label>    
+    <input type="radio" id="star-1" name="rating" value="1">
+    <label for="star-1" title="Оценка «1»"></label>
+  </div> --}}
 
-{{!-- <div class="form-check form-check-inline" class="rating-area">
-  <input class="form-check-input" type="radio" name="rating" id="inlineRadio1" value="1">
-  <label class="form-check-label" for="inlineRadio1">1</label>
+  <div class="mb-3">
+    <input type="text" class="hidden" value="{{executor.id}}" style="visibility: hidden;" hidden>
+    <label for="exampleFormControlInput1" class="form-label">Оставьте отзыв об этом исполнителе</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" name="datamail" placeholder="Ваша электронная почта">
+  </div>
+  <div class="mb-3">
+    <p class="form-label">Насколько вы довольны результатом?</p>
+    <div class="rating-area">
+      <input type="radio" id="star-5" name="rating" value="5">
+      <label for="star-5" title="Оценка «5»"></label>	
+      <input type="radio" id="star-4" name="rating" value="4">
+      <label for="star-4" title="Оценка «4»"></label>    
+      <input type="radio" id="star-3" name="rating" value="3">
+      <label for="star-3" title="Оценка «3»"></label>  
+      <input type="radio" id="star-2" name="rating" value="2">
+      <label for="star-2" title="Оценка «2»"></label>    
+      <input type="radio" id="star-1" name="rating" value="1">
+      <label for="star-1" title="Оценка «1»"></label>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label" class="feedbackTextArea" >Отзыв</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="feedbackTextArea" placeholder="Опишите тему работы, срок выполнения, результат"></textarea>
+  </div>
+  <input class="btn btn-primary" type="submit" value="Опубликовать отзыв" class="buttonFeedback">
+  </form>
+  <div id="feedbackContainer">
+    <div class="feedbackCard">
+      <p id="paragrafFB" style="visibility: hidden;">Отзывы об исполнителе {{executor.name}}</p>
+    </div>
+  </div>
 </div>
-<div class="form-check form-check-inline" class="rating-area">
-  <input class="form-check-input" type="radio" name="rating" id="inlineRadio2" value="2">
-  <label class="form-check-label" for="inlineRadio2">2</label>
-</div>
-<div class="form-check form-check-inline" class="rating-area">
-  <input class="form-check-input" type="radio" name="rating" id="inlineRadio3" value="3">
-  <label class="form-check-label" for="inlineRadio1">3</label>
-</div>
-<div class="form-check form-check-inline" class="rating-area">
-  <input class="form-check-input" type="radio" name="rating" id="inlineRadio4" value="4">
-  <label class="form-check-label" for="inlineRadio2">4</label>
-</div>
-<div class="form-check form-check-inline" class="rating-area">
-  <input class="form-check-input" type="radio" name="rating" id="inlineRadio5" value="5">
-  <label class="form-check-label" for="inlineRadio1">5</label>
-</div> --}}
-
-
-<div class="mb-3">
-  <input type="text" class="hidden" value="{{executor.id}}" style="visibility: hidden;">
-  <label for="exampleFormControlInput1" class="form-label">Оставьте отзыв об этом исполнителе</label>
-  <input type="email" class="form-control" id="exampleFormControlInput1" name="datamail" placeholder="Ваша электронная почта">
-</div>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label" class="feedbackTextArea" >Отзыв</label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="feedbackTextArea" placeholder="Опишите тему работу, срок выполнения, результат"></textarea>
-</div>
-<input class="btn btn-primary" type="submit" value="Опубликовать отзыв" class="buttonFeedback">
-</form>
-<div id="feedbackCantainer">
-  <p id="paragrafFB" style="visibility: hidden;">Отзывы об исполнителе {{executor.name}}</p>
-</div>
- <div>
- <a href="/executors">Вернуться назад ко всем исполнителям</a>
- </div> 

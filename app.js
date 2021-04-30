@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const cookieParser = require('cookie-parser');
+const createError = require('http-errors');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const dbConnect = require('./db/dbConnect');
@@ -16,8 +16,6 @@ const categoriesRouter = require('./routes/categories/category');
 const mongoUrl = process.env.DATABASE_STRING;
 
 const app = express();
-
-// seed();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -57,7 +55,7 @@ app.use('/executors', executorsRouter);
 app.use('/orders', orderRouter);
 app.use('/categories', categoriesRouter);
 
-// Если HTTP-запрос дошёл до этой строчки, значит ни один из ранее встречаемых рутов не ответил на запрос.
+// Если HTTP-запрос дошёл до этой строчки,значит ни один из ранее встречаемых рутов не ответил на запрос.
 //  Это значит, что искомого раздела просто нет на сайте.
 //  Для таких ситуаций используется код ошибки 404.
 //  Создаём небольшое middleware, которое генерирует соответствующую ошибку.
@@ -70,7 +68,7 @@ app.use((req, res, next) => {
 });
 
 // Отлавливаем HTTP-запрос с ошибкой и отправляем на него ответ.
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // Получаем текущий ражим работы приложения.
   const appMode = req.app.get('env');
   // Создаём объект, в котором будет храниться ошибка.

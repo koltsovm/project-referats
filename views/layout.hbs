@@ -33,9 +33,6 @@
               {{#each categories}}
                 <li><a class="dropdown-item" href="/categories/{{this.id}}">{{this.title}}</a></li>
               {{/each}}
-              {{!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -43,38 +40,14 @@
               Исполнители
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              {{!-- {{#each categories}} --}}
-                {{!-- <li><a class="dropdown-item" href="#">{{this.title}}</a></li> --}}
-
-              {{!-- {{/each}} --}}
               {{#each categories}}
               <li><a class="dropdown-item" href="/categories/{{this._id}}">{{this.title}}</a></li>
               {{/each}}
-              {{!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li> --}}
             </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/executors">Отзывы об исполнителях</a>
           </li>
-          {{!-- {{#if username}}
-            <li class="nav-item">
-              <a class="nav-link" href="/registration/logout" tabindex="-1" aria-disabled="true">Выйти</a>
-            </li>
-          {{else}}
-            <li class="nav-item">
-              <a class="nav-link" href="/registration/login" tabindex="-1" aria-disabled="true">Войти</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/registration" tabindex="-1" aria-disabled="true">Зарегистрироваться</a>
-            </li>
-          {{/if}}
-          {{#if username}}
-            <li class="nav-item">
-              <a class="nav-link" href="/orders" tabindex="-1" aria-disabled="true">Создать заказ</a>
-            </li>
-          {{/if}} --}}
         </ul>
           {{#if username}}
             <div>
@@ -91,11 +64,6 @@
               <a class="btn btn-outline-primary nav-button" href="/registration" tabindex="-1" aria-disabled="true">Зарегистрироваться</a>
             </div>
           {{/if}}
-
-        {{!-- <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Поиск</button>
-        </form> --}}
       </div>
     </div>
   </nav>
@@ -105,7 +73,6 @@
   <footer class="footer mt-auto py-3 bg-light">
     <div class="container-fluid footer-container">
       <div class="footer-logo">
-        {{!-- <a class="navbar-brand" href="#">Fixed bottom</a> --}}
         <p>Elbrus, 2021</p>
       </div>
       <div class="footer-content">

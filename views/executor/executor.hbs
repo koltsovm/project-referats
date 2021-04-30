@@ -3,19 +3,6 @@
     <a href="/executors">Вернуться ко всем исполнителям</a>
   </div> 
 
-  {{!-- <div id="executor">
-    <ul>
-      <li>Логин исполнителя: {{executor.username}}</li>
-      <li>Имя: {{executor.firstName}}</li>
-      <li>В каких категориях работает: 
-        {{#each executor.categories}}
-        <a href="/categories/{{this._id}}">{{this.title}}</a> 
-        {{/each}}
-      </li>
-      <li>Рейтинг: {{executor.rating}}</li>
-      <li>Все отзывы: {{executor.reviews}}</li>
-    </ul>
-  </div> --}}
   <div class="container profile-container">
     <div class="avatar-container">
       {{#if executor.avatar}}
@@ -48,19 +35,6 @@
 
 
   <form action="" method="post" id="forFeedback" style="visibility: inherit;">
-
-  {{!-- <div class="rating-area">
-    <input type="radio" id="star-5" name="rating" value="5">
-    <label for="star-5" title="Оценка «5»"></label>	
-    <input type="radio" id="star-4" name="rating" value="4">
-    <label for="star-4" title="Оценка «4»"></label>    
-    <input type="radio" id="star-3" name="rating" value="3">
-    <label for="star-3" title="Оценка «3»"></label>  
-    <input type="radio" id="star-2" name="rating" value="2">
-    <label for="star-2" title="Оценка «2»"></label>    
-    <input type="radio" id="star-1" name="rating" value="1">
-    <label for="star-1" title="Оценка «1»"></label>
-  </div> --}}
 
   <div class="mb-3">
     <input type="text" class="hidden" value="{{executor.id}}" style="visibility: hidden;" hidden>

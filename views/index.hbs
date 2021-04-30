@@ -3,11 +3,11 @@
   <div class="container centered">
     <a class="btn btn-primary" href="/orders" role="button">Разместить заказ</a>
   </div>
-  <div class="main-page-categories">
-    {{#each categories}}
-    <a class="main-category-links" href="/categories/{{this.id}}" role="button">{{this.title}}</a>
-    {{/each}}
-  </div>
+</div>
+<div class="main-page-categories">
+  {{#each categories}}
+  <a class="main-category-links" href="/categories/{{this.id}}" role="button">{{this.title}}</a>
+  {{/each}}
 </div>
 <div class="executors-container">
   {{#each executors}}

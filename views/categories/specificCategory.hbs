@@ -1,5 +1,21 @@
-<div id="filtered-executors">
+{{!-- <div id="executors">
   {{#each filteredExecutors}}
     <a href="/executors/{{this.id}}">{{this.username}}</a>
+  {{/each}}
+</div> --}}
+
+<div id="executors" class="executors-container">
+  {{#each filteredExecutors}}
+    <a href="/executors/{{this.id}}">
+      <div class="executor-card">
+        <div class="exec-card-img">
+          <img class="card-img" src="/img/previews/{{this.avatar}}" alt="avatar">
+        </div>
+        <div class="exec-card-description">
+          <p><a class="exec-card-link" href="/executors/{{this.id}}"><b>{{this.firstName}} {{this.lastName}}</b></a> <sup>@{{this.username}}</sup></p>
+          <article class="card-text">{{this.about}}</article>
+        </div>
+      </div>
+    </a>
   {{/each}}
 </div>

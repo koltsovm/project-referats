@@ -10,6 +10,9 @@ router.get('/:id', async (req, res) => {
     accum.push({
       id: executor.id,
       username: executor.username,
+      firstName: executor.firstName,
+      lastName: executor.firstName,
+      avatar: executor.avatar,
     });
     return accum;
   }, []);

@@ -12,6 +12,7 @@ const orderRouter = require('./routes/orders/order');
 const profileRouter = require('./routes/profile/profile');
 const registrationRouter = require('./routes/registration/registration');
 const categoriesRouter = require('./routes/categories/category');
+const customersRouter = require('./routes/customers');
 
 const mongoUrl = process.env.DATABASE_STRING;
 
@@ -54,6 +55,7 @@ app.use('/registration', registrationRouter);
 app.use('/executors', executorsRouter);
 app.use('/orders', orderRouter);
 app.use('/categories', categoriesRouter);
+app.use('/customers', customersRouter);
 
 // Если HTTP-запрос дошёл до этой строчки,значит ни один из ранее встречаемых рутов не ответил на запрос.
 //  Это значит, что искомого раздела просто нет на сайте.
@@ -62,7 +64,7 @@ app.use('/categories', categoriesRouter);
 app.use((req, res, next) => {
   const error = createError(
     404,
-    'Запрашиваемой страницы не существует на сервере.',
+    'Запрашиваемой страницы не существует на сервере.'
   );
   next(error);
 });

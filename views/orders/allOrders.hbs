@@ -1,0 +1,15 @@
+<h1 class="header">{{orders.[0].category.title}}</h1>
+<div id="executors" class="executors-container">
+  {{#each orders}}
+    <a href="/orders/{{this.id}}"  class="customer-card-label">
+      <div class="executor-card">
+        <div class="exec-card-description">
+          <p>Заказчик: <a class="exec-card-link" href="/customers/{{this.customer.id}}"><b>{{this.customer.firstName}} {{this.customer.lastName}}</b></a> <sup>@{{this.customer.username}}</sup></p>
+          <article class="card-text">{{this.description}}</article>
+          <p>Дедлайн: {{this.deadline}}</p>
+        </div>
+      </div>
+    </a>
+  {{/each}}
+</div>
+

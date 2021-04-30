@@ -28,7 +28,7 @@ router
     } catch (error) {
       return res.render('error');
     }
-    return res.render('index'); // Добавить обработку на случай если пытается зайти неавторизованный пользователь
+    return res.render('index');
   })
   // Загрузка нового аватара
   .post(uploadImage.single('avatarFile'), async (req, res) => {

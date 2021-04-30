@@ -4,6 +4,7 @@ const WorkType = require('../models/workType.model');
 
 dbConnect();
 
+// Засеиваем базу типов работ
 const seeder = async () => {
   console.log('Seeder started');
   const workTypes = [
@@ -53,7 +54,7 @@ const seeder = async () => {
       title: 'Другое',
     },
   ];
-  
+
   await WorkType.insertMany(workTypes);
   mongoose.disconnect();
   console.log('Seeder finshed');

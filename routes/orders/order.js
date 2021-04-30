@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     return res.redirect('registration/login');
   }
   const categories = await Category.find(); // находим все категории по которым можно сделать заказ
-  res.render('orders/order', { categories });
+  return res.render('orders/order', { categories });
 });
 
 router.get('/fillyourorder', (req, res) => {
@@ -20,7 +20,8 @@ router.get('/fillyourorder', (req, res) => {
 
 router.post('/', async (req, res) => {
   const user = await Customer.findOne({ username: req.session.username });
-  const { title, description, deadline, categoryId, type } = req.body; // получаем заказ и создаем документ с этим заказом
+  // получаем заказ и создаем документ с этим заказом
+  const { title, description, deadline, categoryId, type } = req.body;
   const typeId = await WorkType.findOne({ title: type });
   await Order.create({
     title,

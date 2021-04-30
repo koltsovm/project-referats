@@ -1,5 +1,4 @@
 const myModal = new bootstrap.Modal(document.getElementById('avatarModal'));
-const profileMainContainer = document.querySelector('.profile-main');
 const userAvatar = document.getElementById('userAvatar');
 const avatarEditButton = document.getElementById('avatar-edit-button');
 const avatarInput = document.getElementById('avatarFile');

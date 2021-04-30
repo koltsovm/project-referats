@@ -69,10 +69,6 @@ router
             const cat = await Category.findOne({ title: item });
             categoriesById.push(cat.id);
           }
-          // await categories.map(async (el) => {
-          //   const cat = await Category.findOne({ title: el });
-          //   categoriesById.push(cat.id);
-          // });
         } else if (categories) {
           const cat = await Category.findOne({ title: categories });
           categoriesById.push(cat);
@@ -101,7 +97,7 @@ router
       });
     }
 
-    return res.render('index', { username }); // заменить hbs path если необходимо
+    return res.render('index', { username });
   });
 
 router
@@ -137,7 +133,7 @@ router
           passwordWrong: '--   или паролем',
         });
       }
-      return res.redirect('/'); // <----- вставить сюда хбс личного кабинета!!!
+      return res.redirect('/');
     } catch (error) {
       res.render('registration/error', {
         errorMessage: 'Упс! Что-то пошло не так..',
@@ -146,7 +142,7 @@ router
       });
     }
     const { username } = req.session;
-    return res.render('index', { username }); // <----- вставить сюда хбс личного кабинета!!!
+    return res.render('index', { username });
   });
 
 router.get('/logout', (req, res) => {

@@ -11,29 +11,7 @@ const aboutBlock = document.getElementById('aboutBlock');
 const inputEmail = document.getElementById('exampleInputEmail1');
 const inputPhone = document.getElementById('exampleInputPhone');
 
-// function validEmail() {
-//   const regExEmail = /^[\w]{1}[\w-\.]*@[\w-]+\.[a-z]{2,4}$/i;
-//   // const inputEmail = document.getElementById('exampleInputEmail1').value;
-//   const valid = regExEmail.test(inputEmail);
-//   if (valid) output = 'Адрес эл. почты введен правильно';
-//   else output = 'Адрес электронной почты введен неправильно!';
-//   document.getElementById('messageForFalseEmail').innerText = output;
-//   return valid;
-// }
-
-// function validPhone() {
-// const regExPhone = /^\d[\d\(\)\ -]{4,14}\d$/;
-// const inputPhone = document.getElementById('exampleInputPhone').value;
-// const valid = regExPhone.test(inputPhone);
-// if (valid) output = 'Номер телефона введен правильно';
-// else output = 'Номер телефона введен неправильно!';
-// document.getElementById('messageForFalsePhone').innerText = output;
-// return valid;
-// }
-
 submitButton.addEventListener('click', (event) => {
-  // validEmail();
-  // validPhone();
   if (passwordArea.value !== repeatPasswordArea.value) {
     event.preventDefault();
     passwordError.hidden = false;

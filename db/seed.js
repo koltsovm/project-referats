@@ -4,7 +4,8 @@ const Category = require('../models/category.model');
 
 dbConnect();
 
-async function seeder() { // засеим базу
+// засеиваем базу категорий
+async function seeder() {
   await dbConnect;
 
   const allCategoris = [];
@@ -38,7 +39,7 @@ async function seeder() { // засеим базу
   allCategoris.push(new Category({ title: 'Экономика' }));
   allCategoris.push(new Category({ title: 'Юриспруденция' }));
   allCategoris.push(new Category({ title: 'Другое' }));
-  await Category.deleteMany()
+  await Category.deleteMany();
   await Category.insertMany(allCategoris);
   await disconnect();
 }

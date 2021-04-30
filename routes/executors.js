@@ -13,17 +13,19 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
   const executor = await Executor.findById(id).populate('categories');
-  res.render('executor/executor', { executor });
+  const allFeedbacks = await FeedBack.find({ executor: id }); 
+  res.render('executor/executor', { executor, allFeedbacks });
 });
 
 router.post('/:id', async (req, res) => {
   const { rating, feedback, email } = req.body;
 
+  let allFeedbacks = [];
   const checkCustomer = await Customer.findOne({ email });
   if (checkCustomer) {
     const { id } = req.params; // executor's id должен совпадать со схемой
     await FeedBack.create({ rating, body: feedback, executor: id });
-    const allFeedbacks = await FeedBack.find({ executor: id }); // поиск по id исполнителя
+    allFeedbacks = await FeedBack.find({ executor: id }); // поиск по id исполнителя
 
     // среднее арифметическое всех отзывов
     const arithmeticMean = allFeedbacks
@@ -32,7 +34,8 @@ router.post('/:id', async (req, res) => {
     // обновление rating
     await Executor.findByIdAndUpdate(id, { rating: mathRound });
   }
-  res.json({ fbFromJson: `${req.body.feedback}` });
+  const arrayAllFeedbacks = allFeedbacks.map((el) => ({ rating: el.rating, body: el.body }));
+  res.json({ fbFromJson: `${req.body.feedback}`, customer: `${checkCustomer.username}`, allFeedbacks: arrayAllFeedbacks });
 });
 
 module.exports = router;

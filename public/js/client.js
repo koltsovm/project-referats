@@ -7,10 +7,8 @@ if (categoryContainer) {
     if (e.target.className.includes('button-category')) {
       const categoryId = e.target.dataset.id;
       const categoryTitle = e.target.dataset.title;
-      console.log('categoryId', categoryId);
       const response = await fetch('orders/fillyourorder'); // отправляем fetch на получение оставшейся формы
       const result = await response.text(); // получаем html text для формы по оформлению заказа
-
       formContainer.innerHTML = result;
 
       document.querySelector('#category').value = categoryTitle;
@@ -23,6 +21,9 @@ if (categoryContainer) {
 const form = document.querySelector('#forFeedback');
 const fbContainer = document.querySelector('#feedbackContainer');
 const paragrafFB = document.querySelector('#paragrafFB');
+const feedbackCard = document.querySelector('.feedbackCard');
+feedbackCard.hidden = true;
+const allFeedbacksExecotor = document.querySelector('#allFeedbacksExecotor');
 
 if (form) {
   form.addEventListener('submit', async (event) => {
@@ -36,15 +37,18 @@ if (form) {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ rating, feedback, email, id }),
+      body: JSON.stringify({
+        rating, feedback, email, id,
+      }),
     });
     if (response.status === 200) {
       const result = await response.json();
       paragrafFB.style.visibility = ' inherit';
       const newParagraf = document.createElement('p');
+      feedbackCard.hidden = false;
+      paragrafFB.innerText += ` ${result.customer}: `;
       newParagraf.innerText += result.fbFromJson;
-      fbContainer.appendChild(newParagraf);
-
+      paragrafFB.appendChild(newParagraf);
       form.hidden = true;
     } else {
       console.log('erooor!', response.status);

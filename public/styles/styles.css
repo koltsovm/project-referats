@@ -54,12 +54,14 @@
 
 .feedbackCard {
   display: flex;
+  flex-direction: column;
   align-items: center;
   border-radius: 10px;
   box-shadow: 5px 5px 5px;
   margin: 2vh;
   padding: 5px;
-  width: 20vw;
+  width: 50vw;
+  height: 20vh;
 }
 
 .back-link {
@@ -283,6 +285,18 @@
 #imageMain .header {
   color: bisque;
   text-shadow: 5px 5px 5px black;
+}
+
+#otzivi {
+  font-size: 22px;
+  margin-top: 20px;
+  color: darkblue;
+}
+
+#paragrafFB {
+  font-size: 20px;
+  font-style: italic;
+  color: cornflowerblue;
 }
 
 @media (min-width: 768px) and (max-width: 991px) {

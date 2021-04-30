@@ -57,8 +57,18 @@
   <input class="btn btn-primary" type="submit" value="Опубликовать отзыв" class="buttonFeedback">
   </form>
   <div id="feedbackContainer">
-    <div class="feedbackCard">
-      <p id="paragrafFB" style="visibility: hidden;">Отзывы об исполнителе {{executor.name}}</p>
+      <div id="otzivi">Все отзывы об исполнителе {{executor.username}}</div>
+      <div id="allFeedbacksExecotor">
+        {{#each allFeedbacks}}
+        <div class="feedbackCard">
+          <p>Рейтинг: {{this.rating}}</p>
+          <br>
+          <p>Отзыв: {{this.body}}</p>
+        </div>
+        {{/each}}
+      </div>
+    <div class="feedbackCard" hidden>
+      <div id="paragrafFB" >Отзыв от </div>
     </div>
   </div>
 </div>

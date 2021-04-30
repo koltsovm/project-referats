@@ -7,7 +7,6 @@ if (categoryContainer) {
     if (e.target.className.includes('button-category')) {
       const categoryId = e.target.dataset.id;
       const categoryTitle = e.target.dataset.title;
-      console.log('categoryId', categoryId);
       const response = await fetch('orders/fillyourorder'); // отправляем fetch на получение оставшейся формы
       const result = await response.text(); // получаем html text для формы по оформлению заказа
 

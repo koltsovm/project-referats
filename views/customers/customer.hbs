@@ -5,38 +5,28 @@
 
   <div class="container profile-container">
     <div class="avatar-container">
-      {{#if executor.avatar}}
-      <img id="userAvatar" src="/img/avatar/{{executor.avatar}}" alt="avatar" class="img-thumbnail avatar">
+      {{#if customer.avatar}}
+      <img id="userAvatar" src="/img/avatar/{{customer.avatar}}" alt="avatar" class="img-thumbnail avatar">
+
       {{else}}
       <img id="userAvatar" src="/img/avatar/default.png" alt="avatar" class="img-thumbnail avatar">
+
       {{/if}}
     </div>
     <div>
-      <p class="h2">{{executor.firstName}} {{executor.lastName}}</p>
-      <p class="lead">@{{executor.username}}</p>
-      <span>Категории исполнителя:</span>
-      <p> 
-        {{#each executor.categories}}
-        <a href="/categories/{{this._id}}">{{this.title}}</a>  
-        {{/each}}
-      </p>
-    </div>
-    <div>
-      <p>О себе:</p>
-      <article>{{executor.about}}</article>
-    </div>
+      <p class="h2">{{customer.firstName}} {{customer.lastName}}</p>
+      <p class="lead">@{{customer.username}}</p>
   </div>
-
 
   <form action="" method="post" id="forFeedback" style="visibility: inherit;">
 
   <div class="mb-3">
     <input type="text" class="hidden" value="{{executor.id}}" style="visibility: hidden;" hidden>
-    <label for="exampleFormControlInput1" class="form-label">Оставьте отзыв об этом исполнителе</label>
+    <label for="exampleFormControlInput1" class="form-label">Оставьте отзыв об этом заказчике</label>
     <input type="email" class="form-control" id="exampleFormControlInput1" name="datamail" placeholder="Ваша электронная почта">
   </div>
   <div class="mb-3">
-    <p class="form-label">Насколько вы довольны результатом?</p>
+    <p class="form-label">Оцените этого заказчика</p>
     <div class="rating-area">
       <input type="radio" id="star-5" name="rating" value="5">
       <label for="star-5" title="Оценка «5»"></label>	
@@ -58,7 +48,7 @@
   </form>
   <div id="feedbackContainer">
     <div class="feedbackCard">
-      <p id="paragrafFB" style="visibility: hidden;">Отзывы об исполнителе {{executor.name}}</p>
+      <p id="paragrafFB" style="visibility: hidden;">Отзывы об исполнителе {{customer.name}}</p>
     </div>
   </div>
 </div>

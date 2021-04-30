@@ -161,6 +161,11 @@
   margin: 5vh auto;
 }
 
+.customer-card-label {
+  text-decoration: none;
+  color: black;
+}
+
 .error {
   display: flex;
   justify-content: center;

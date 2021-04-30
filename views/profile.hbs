@@ -26,10 +26,9 @@
             </div>
             {{/if}}
           </div>
-          {{!-- {{#if user}} --}}
           <div>
             <p class="h2">{{executor.firstName}} {{executor.lastName}}</p>
-            <p class="lead">{{executor.username}}</p>
+            <p class="lead">@{{executor.username}}</p>
             <p>E-mail: {{executor.email}}</p>
             <p>Телефон: {{executor.phone}}</p>
             <span>Мои категории:</span>
@@ -43,7 +42,6 @@
             <p>О себе:</p>
             <article>{{executor.about}}</article>
           </div>
-          {{!-- {{/if}} --}}
         </div>
       </div>
       <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -52,7 +50,7 @@
             <div class="profile-header">
               <h1>Мои заказы</h1>
             </div>
-            <p class="lead">Гномы-строители еще не завершили эту локацию, но вы всегда можете зайти попозже :)</p>
+            <p class="lead">Раздел в разработке</p>
             {{#each this.orders}}
               <h3>{{this.title}}</h3>
               <p class="lead">{{this.category}}</p>
@@ -69,7 +67,7 @@
             <div class="profile-header">
               <h1>Выполненные заказы</h1>
             </div>
-            <p class="lead">Гномы-строители еще не завершили эту локацию, но вы всегда можете зайти попозже :)</p>
+            <p class="lead">Раздел в разработке</p>
           </div>
         </div>
       </div>
@@ -79,7 +77,7 @@
         </div>
         <form action="" method="POST">
           <div class="mb-3">
-            <label for="formFileMultiple" class="form-label">Загрузить примеры работ</label>
+            <label for="formFileMultiple" class="form-label">Загрузить примеры работ (не более 5 файлов)</label>
             <input name="myWorks" class="form-control" type="file" id="formFileMultiple" multiple>
           </div>
           <button class="btn btn-primary" type="submit">Загрузить</button>
@@ -105,14 +103,12 @@
       <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <div class="container profile-container">
           <img src="" alt="" class="img-thumbnail">
-          {{!-- {{#if user}} --}}
           <div>
             <p class="h2">Имя: {{customer.firstName}} {{customer.lastName}}</p>
             <p class="lead">Ник: {{customer.username}}</p>
             <p>E-mail: {{customer.email}}</p>
             <p>Телефон: {{customer.phone}}</p>
           </div>
-          {{!-- {{/if}} --}}
         </div>
       </div>
       <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -152,7 +148,6 @@
       <form action="" method="post">
         <div class="modal-body">
             <div class="mb-3">
-              {{!-- <label for="avatarFile" class="form-label">Default file input example</label> --}}
               <input class="form-control" type="file" id="avatarFile" name="avatarFile" required>
             </div>
         </div>

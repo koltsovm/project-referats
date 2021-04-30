@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
   console.log(id);
-  const executor = await Executor.findById(id);
+  const executor = await Executor.findById(id).populate('categories');
   res.render('executor/executor', { executor });
 });
 

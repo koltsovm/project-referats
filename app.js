@@ -64,9 +64,9 @@ app.use('/categories', categoriesRouter);
 app.use((req, res, next) => {
   const error = createError(
     404,
-    'Запрашиваемой страницы не существует на сервере.'
-    );
-    next(error);
+    'Запрашиваемой страницы не существует на сервере.',
+  );
+  next(error);
 });
 
 // Отлавливаем HTTP-запрос с ошибкой и отправляем на него ответ.
@@ -96,7 +96,7 @@ app.use((err, req, res, next) => {
   res.render('registration/error');
 });
 
-const PORT = 3000;
+const { PORT } = process.env;
 
 app.listen(PORT || 3000, () => {
   dbConnect();

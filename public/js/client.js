@@ -19,11 +19,9 @@ if (categoryContainer) {
 
 // код для добавления отзыва на страницу к исполнителю
 const form = document.querySelector('#forFeedback');
-const fbContainer = document.querySelector('#feedbackContainer');
 const paragrafFB = document.querySelector('#paragrafFB');
 const feedbackCard = document.querySelector('.feedbackCard');
 feedbackCard.hidden = true;
-const allFeedbacksExecotor = document.querySelector('#allFeedbacksExecotor');
 
 if (form) {
   form.addEventListener('submit', async (event) => {
